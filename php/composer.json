@@ -22,8 +22,6 @@
   },
   "autoload": {
     "psr-4": {
-      "Fragments\\": "fragments/",
-      "Pages\\": "pages/",
       "Routes\\": "routes/",
       "App\\": "src/"
     }
