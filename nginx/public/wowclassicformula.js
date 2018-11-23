@@ -1,0 +1,6 @@
+/**
+ * @constructor
+ */
+WowClassicFormula = function() {
+
+};
