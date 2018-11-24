@@ -19,27 +19,23 @@ require 'error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
-// TODO: Fishing, Mining, BOP/BOE
+// TODO: BOP/BOE
+// TODO: Fishing, Mining, Attack Power against (xxx)
 // TODO: Buttons to filter items for specific patches.
-// TODO: Beastslayer
-// TODO: Quest/Drop/PVP
+// TODO: Quest/Drop/PVP... More granulated locations.
 
 libxml_use_internal_errors(true);
 
-$slots = $sql->raw("SELECT * FROM item_slots WHERE enabled = 1")->fetchAll();
-$types = $sql->raw("SELECT * FROM item_types")->fetchAll();
-
-//$items = $sql->raw("SELECT itemId, itemName FROM item_stats")->fetchAll();
-$items = [
-    ["itemId" => 21563, "itemName" => "Don Rodrigo's Band"],
-    ["itemId" => 1009, "itemName" => "Compact Hammer"],
-    ["itemId" => 23319, "itemName" => "Lieutenant Commander's Silk Mantle"]
-];
+$items = $sql->raw("SELECT itemId, itemName FROM item_stats")->fetchAll();
+/*$items = [
+    ["itemId" => 21563],
+    ["itemId" => 1009],
+    ["itemId" => 23319]
+];*/
 
 $climate = new CLImate();
-$progress = $climate->progress()->total(count($items));
 
-$parseAndStoreData = function($contents, $itemId) use ($sql, $slots, $types, $progress, $climate) {
+$parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     $document = new DOMDocument();
     $document->loadHTML($contents);
     $element = $document->getElementById("tooltip$itemId-generic");
@@ -77,17 +73,25 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $slots, $types, $pr
         }
     }
 
-    $itemSlot = null;
-    foreach ($slots as $slot) {
-        $slotName = $slot['slotName'];
-
-        if (preg_match("/.*$slotName.*/", $strippedContents)) {
-            $itemSlot = $slotName;
-        }
+    $slotName = null;
+    $typeName = null;
+    if (preg_match('/<table width="100%"><tr><td>([\D]*?)<\/td><th>([\D]*?)<\/th>/', $contents, $matches)) {
+        $slotName = $matches[1];
+        $typeName = $matches[2];
     }
 
-    if ($itemSlot == null) {
-        $climate->yellow("Skipping $itemName ($itemId) no matched slot\n");
+    if (empty($slotName) && preg_match('/<table width="100%"><tr><td>(Trinket)<\/td>/', $contents, $matches)) {
+        $slotName = $matches[1];
+    }
+
+    if (empty($typeName)) {
+        $typeName = $slotName;
+    }
+
+    if ($slotName == null) {
+        if (!preg_match('/<a class="q1" href=".*?">This Item Begins a Quest<\/a>/', $contents, $matches)) {
+            $climate->yellow("Skipping $itemName ($itemId) no matched slot");
+        }
         return;
     }
 
@@ -105,17 +109,11 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $slots, $types, $pr
         }
     }
 
-    $statsParsed['itemName'] = $itemName;
-    $statsParsed['slotName'] = $itemSlot;
-
-    foreach ($types as $type) {
-        $typeName = $type['typeName'];
-        if (preg_match("/.*$typeName.*/", $strippedContents)) {
-            $statsParsed['typeName'] = $typeName;
-        }
-    }
 
     $statsParsed['itemId'] = $itemId;
+    $statsParsed['itemName'] = $itemName;
+    $statsParsed['slotName'] = $slotName;
+    $statsParsed['typeName'] = $typeName;
     $statsParsed['uniqueItem'] = preg_match('/Unique/', $strippedContents) ? 1 : 0;
 
     // Parse item level.
@@ -126,6 +124,19 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $slots, $types, $pr
     // Parse required level.
     if (preg_match('/Requires Level (\d*)/', $contents, $matches)) {
         $statsParsed['requiresLevel'] = $matches[1];
+    }
+
+    if (preg_match('/<\/b><br \/>(Binds when equipped|Binds when picked up+?)/', $contents, $matches)) {
+        $map = [
+            "Binds when equipped" => "equipped",
+            "Binds when picked up" => "pickup"
+        ];
+        if (isset($map[$matches[1]])) {
+            $statsParsed['bindOn'] = $map[$matches[1]];
+        } else {
+            $m = $matches[1];
+            $climate->yellow("Unknown bind on $itemId $m");
+        }
     }
 
     // Parse item rarity
@@ -142,7 +153,7 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $slots, $types, $pr
             $statsParsed['rarity'] = $map[$matches[1]];
         } else {
             $q = $matches[1];
-            $climate->yellow("Unknown rarity $itemId $q\n");
+            $climate->yellow("Unknown rarity $itemId $q");
         }
     }
 
@@ -156,15 +167,13 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $slots, $types, $pr
     $query = "INSERT INTO item_stats ($keys) VALUES (:$keysColon) ON DUPLICATE KEY UPDATE $updateKeys";
     $sql->execute($query, $statsParsed);
 
-    // Do something with the classes
+    // Insert, update, rmote classes for item.
     if (preg_match("/Classes: (.*?)Requires/", $strippedContents, $matches)) {
         foreach(explode(",", $matches[1]) as $className) {
             $query = "INSERT INTO item_classes (itemId, itemName, className) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE itemId=VALUES(itemId), className=VALUES(className), itemName=VALUES(itemName)";
             $sql->execute($query, [$itemId, $itemName, trim($className)]);
         }
     }
-
-    $progress->advance();
 };
 
 $promises = [];
@@ -173,16 +182,26 @@ $promises = [];
 foreach ($items as $item) {
     $itemId = $item['itemId'];
 
+    $path = "../data/$itemId.html";
+    if (file_exists($path)) {
+        $parseAndStoreData(file_get_contents($path), $itemId);
+        continue;
+    }
+
     $client = new Client();
     $promise = $client->requestAsync('GET', "http://classicdb.ch/?item=$itemId");
     $promise->then(function(ResponseInterface $response) use ($parseAndStoreData, $itemId){
         $contents = $response->getBody()->getContents();
+        $path = "../data/$itemId.html";
+        file_put_contents($path, $contents);
+        chown($path, 'www-data');
+        chgrp($path, 'www-data');
         $parseAndStoreData($contents, $itemId);
     }, function(RequestException $ex) use ($itemId, $climate) {
         $message = $ex->getMessage();
-        $climate->red("$itemId\n$message\n");
+        $climate->red("ItemId: '$itemId'\n$message");
     })->then(null, function(Throwable $ex) use ($itemId, $climate) {
-        $climate->red("$itemId\n$ex\n");
+        $climate->red("ItemId: '$itemId''\n$ex");
     });
     $promises[] = $promise;
 }
