@@ -8,9 +8,11 @@
     <script src="//code.jquery.com/jquery-3.3.1.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/accordion.js"></script>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/accordion.css">
 
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -19,54 +21,115 @@
 </head>
 <body onload="window.wcf = new WowClassicFormula();">
 
-<div class="ui grid">
-    <div class="twelve wide column ui input">
-        <input class="fullwidth" type="text" name="formula" placeholder="Formula...">
+<div class="ui styled accordion fluid">
+    <div class="title">
+        <i class="dropdown icon"></i>
+        Settings
     </div>
-    <div class="two wide column ui">
-        <div class="ui fluid search selection dropdown">
-            <input type="hidden" name="class">
-            <div class="default text">Pick Class...</div>
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                {% for class in classes %}
-                <div class="item" data-value="{{ class }}">
-                    <img class="ui mini rounded image" src="//wow.zamimg.com/images/wow/icons/large/classicon_{{ class|lower }}.jpg">
-                    {{ class }}
-                </div>
+    <div class="content active">
+        <form class="ui mini form">
+            {% for key, value in attributes %}
+            <h5 class="ui header">{{ key }}</h5>
+            <div class="ui grid">
+                {% for attribute in value %}
+                    <div class="ui column width-tiny">
+                        <div class="field">
+                            <label>{{ attribute|spacify|title }}</label>
+                            <input type="number" name="{{ attribute }}">
+                        </div>
+                    </div>
                 {% endfor %}
+
             </div>
-        </div>
-    </div>
-    <div class="two wide column">
-        <button class="fullwidth ui primary button">Apply</button>
+            {% endfor %}
+
+            <div class="ui divider"></div>
+            <div class="ui grid">
+                <div class="ui column width-small">
+                    <div class="field">
+                        <label>Class</label>
+                        <div class="ui fluid search selection dropdown">
+                            <input type="hidden" name="class">
+                            <div class="default text">Pick Class...</div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                {% for class in classes %}
+                                    <div class="item" data-value="{{ class }}">
+                                        <img class="ui mini rounded image" src="//wow.zamimg.com/images/wow/icons/large/classicon_{{ class|lower }}.jpg">
+                                        {{ class }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
+
 
 <div class="ui divider"></div>
 
-<div id="content" class="ui">
-    <table class="ui very basic collapsing small very compact celled table">
-        <thead>
-        <tr>
-            <th>Item Name</th>
-            <th>Points</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td data-label="Name">James</td>
-            <td data-label="Age">24</td>
-        </tr>
-        <tr>
-            <td data-label="Name">Jill</td>
-            <td data-label="Age">26</td>
-        </tr>
-        </tbody>
-    </table>
+<div id="content" class="ui grid">
+    <div class="ui column width-medium">
+        <div class="ui styled accordion fluid">
+            <div class="title">
+                <i class="dropdown icon"></i>
+                Head
+            </div>
+            <div class="content active">
+                <table class="ui striped small very compact celled table">
+                    <tbody>
+                    <tr>
+                        <td><img class="ui pico rounded image" src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_24.jpg"/></td>
+                        <td data-label="ItemName" class="epic">Halo of Transendence</td>
+                        <td data-label="Points">30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td data-label="ItemName" class="epic">Circlet of Prophecy</td>
+                        <td data-label="Points">15</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td data-label="ItemName" class="rare">Cassandra's Grace</td>
+                        <td data-label="Points">15</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="ui column width-medium">
+        <div class="ui styled accordion fluid">
+            <div class="title">
+                <i class="dropdown icon"></i>
+                Back
+            </div>
+            <div class="content">
+                <table class="ui striped small very compact celled table">
+                    <tbody>
+                    <tr>
+                        <td><img class="ui pico rounded image" src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_24.jpg"/></td>
+                        <td data-label="ItemName">Halo of Transendence</td>
+                        <td data-label="Points">30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td data-label="ItemName">Circlet of Prophecy</td>
+                        <td data-label="Points">15</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
-    $('.ui.dropdown').dropdown();
+    $('.dropdown').dropdown();
+    $('.accordion').accordion();
 </script>
 </body>
 </html>

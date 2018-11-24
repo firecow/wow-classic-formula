@@ -8,6 +8,7 @@
 
 html, body {
     margin: 0;
+    background-color: #000000;
     padding: var(--padding);
 }
 
@@ -15,14 +16,60 @@ html, body {
     padding: var(--padding);
 }
 
-.wider {
-    min-width: 300px;
+
+.width-tiny {
+    min-width: 100px;
+    max-width: 100px;
 }
 
-.fullwidth {
+.width-small {
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.width-medium {
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.width-large {
+    min-width: 400px;
+    max-width: 400px;
+}
+
+.full {
     width: 100%;
 }
 
 .floatRight {
     float:right;
+}
+
+.pico {
+    width: 18px;
+}
+
+.uncommon {
+    color: #1eff00;
+    font-weight: bold;
+}
+
+.common {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.rare {
+    color: #0070dd;
+    font-weight: bold;
+}
+
+.epic {
+    color: #a335ee;
+    font-weight: bold;
+}
+
+.legendary {
+    color: #ff8000;
+    font-weight: bold;
 }

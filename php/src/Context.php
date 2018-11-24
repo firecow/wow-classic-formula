@@ -31,6 +31,10 @@ class Context
         $this->twig->addFilter(new TwigFilter('localize', function (string $localizationKey, ...$args) use ($localizedTexts) {
             return $localizedTexts->getText($localizationKey, ...$args);
         }));
+
+        $this->twig->addFilter(new TwigFilter('spacify', function (string $str) {
+            return $Words = preg_replace('/(?<!\ )[A-Z1-9]/', ' $0', $str);
+        }));
     }
 
     protected function getConfig(): Config
