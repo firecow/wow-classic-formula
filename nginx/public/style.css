@@ -8,11 +8,21 @@
 
 html, body {
     margin: 0;
-    padding: 0;
-    font-size: var(--largesize);
-    font-family: monospace;
+    padding: var(--padding);
 }
 
 .padding {
     padding: var(--padding);
+}
+
+.wider {
+    min-width: 300px;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.floatRight {
+    float:right;
 }

@@ -4,15 +4,69 @@
 
     <meta name="viewport" content="initial-scale=1">
     <title>WoW Classic Formula</title>
+
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.css">
+
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script type="text/javascript" src="wowclassicformula.js"></script>
 </head>
-<body>
+<body onload="window.wcf = new WowClassicFormula();">
 
+<div class="ui grid">
+    <div class="twelve wide column ui input">
+        <input class="fullwidth" type="text" name="formula" placeholder="Formula...">
+    </div>
+    <div class="two wide column ui">
+        <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="class">
+            <div class="default text">Pick Class...</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                {% for class in classes %}
+                <div class="item" data-value="{{ class }}">
+                    <img class="ui mini rounded image" src="//wow.zamimg.com/images/wow/icons/large/classicon_{{ class|lower }}.jpg">
+                    {{ class }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="two wide column">
+        <button class="fullwidth ui primary button">Apply</button>
+    </div>
+</div>
 
-<div id="content" class="padding"></div>
+<div class="ui divider"></div>
 
+<div id="content" class="ui">
+    <table class="ui very basic collapsing small very compact celled table">
+        <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Points</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td data-label="Name">James</td>
+            <td data-label="Age">24</td>
+        </tr>
+        <tr>
+            <td data-label="Name">Jill</td>
+            <td data-label="Age">26</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    $('.ui.dropdown').dropdown();
+</script>
 </body>
 </html>

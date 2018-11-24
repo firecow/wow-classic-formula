@@ -13,7 +13,9 @@ class LayoutRoute
 
     public function executeRoute(Context $ctx, ServerRequest $request, array $args): ResponseInterface
     {
-        $data = array();
+        $data = array(
+            "classes" => ["Priest", "Rogue", "Warrior", "Druid", "Mage", "Warlock", "Paladin", "Shaman"]
+        );
         $html = $ctx->render("routes/LayoutRoute.twig", $data);
         return new HtmlTextResponse($html);
     }
