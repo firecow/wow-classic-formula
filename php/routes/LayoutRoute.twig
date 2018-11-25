@@ -27,27 +27,32 @@
         Settings
     </div>
     <div class="content active">
-        <form class="ui mini form">
+        <form class="ui mini form" onsubmit="return false;">
             {% for key, value in attributes %}
-            <h5 class="ui header">{{ key }}</h5>
             <div class="ui grid">
+                <div class="ui column width-tiny middle aligned">
+                    {{ key }}
+                </div>
                 {% for attribute in value %}
-                    <div class="ui column width-tiny">
-                        <div class="field">
-                            <label>{{ attribute|spacify|title }}</label>
-                            <input type="number" name="{{ attribute }}">
-                        </div>
+                <div class="ui column width-tiny">
+                    <div class="field">
+                        <label>{{ attribute|spacify|title }}</label>
+                        <input type="number" name="{{ attribute }}">
                     </div>
+                </div>
                 {% endfor %}
-
             </div>
+            <div class="ui divider"></div>
             {% endfor %}
 
-            <div class="ui divider"></div>
             <div class="ui grid">
                 <div class="ui column width-small">
+                    <button onclick="window.wcf.submitPressed(event);" class="ui primary button">
+                        Submit
+                    </button>
+                </div>
+                <div class="ui column width-small">
                     <div class="field">
-                        <label>Class</label>
                         <div class="ui fluid search selection dropdown">
                             <input type="hidden" name="class">
                             <div class="default text">Pick Class...</div>
