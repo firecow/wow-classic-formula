@@ -12,10 +12,18 @@ html, body {
     padding: var(--padding);
 }
 
+.ui.header.no-margin {
+    margin: 0;
+}
+
 .padding {
     padding: var(--padding);
 }
 
+.width-pico {
+    min-width: 75px;
+    max-width: 75px;
+}
 
 .width-tiny {
     min-width: 100px;

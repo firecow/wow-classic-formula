@@ -7,8 +7,9 @@ use App\Exceptions\RouteException;
 use GuzzleHttp\Psr7\ServerRequest;
 use League\Route\Http\Exception\NotFoundException;
 
-require 'vendor/autoload.php';
 require 'error.php';
+require 'vendor/autoload.php';
+
 
 $ctx = new Context();
 

@@ -27,48 +27,45 @@
         Settings
     </div>
     <div class="content active">
-        <form class="ui mini form" onsubmit="return false;">
+        <form class="ui form" onsubmit="return false;">
+
             {% for key, value in attributes %}
-            <div class="ui grid">
-                <div class="ui column width-tiny middle aligned">
-                    {{ key }}
-                </div>
+            <h6 class="ui dividing header no-margin">{{ key }}</h6>
+            <div class="ui mini horizontal list">
                 {% for attribute in value %}
-                <div class="ui column width-tiny">
-                    <div class="field">
-                        <label>{{ attribute|spacify|title }}</label>
-                        <input type="number" name="{{ attribute }}">
+                <div class="item">
+                    <div class="content">
+                        <div class="header">{{ attribute|spacify|title }}</div>
+                        <input class="width-pico" type="text" name="{{ attribute }}">
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            <div class="ui divider"></div>
             {% endfor %}
-
-            <div class="ui grid">
-                <div class="ui column width-small">
+            <div class="ui divider"></div>
+            <div class="ui horizontal list">
+                <div class="item width-small">
+                    <div class="ui fluid search selection dropdown">
+                        <input type="hidden" name="class">
+                        <div class="default text">Pick Class...</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            {% for class in classes %}
+                                <div class="item" data-value="{{ class }}">
+                                    <img class="ui mini rounded image" src="//wow.zamimg.com/images/wow/icons/large/classicon_{{ class|lower }}.jpg">
+                                    {{ class }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
                     <button onclick="window.wcf.submitPressed(event);" class="ui primary button">
                         Submit
                     </button>
                 </div>
-                <div class="ui column width-small">
-                    <div class="field">
-                        <div class="ui fluid search selection dropdown">
-                            <input type="hidden" name="class">
-                            <div class="default text">Pick Class...</div>
-                            <i class="dropdown icon"></i>
-                            <div class="menu">
-                                {% for class in classes %}
-                                    <div class="item" data-value="{{ class }}">
-                                        <img class="ui mini rounded image" src="//wow.zamimg.com/images/wow/icons/large/classicon_{{ class|lower }}.jpg">
-                                        {{ class }}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+
         </form>
     </div>
 </div>
