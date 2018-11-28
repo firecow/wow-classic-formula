@@ -75,13 +75,11 @@ class Diff
 
         // loop over the rows
         for ($index1 = 1; $index1 <= $length1; $index1++) {
-
             // create the new row
             $table[$index1] = array(0);
 
             // loop over the columns
             for ($index2 = 1; $index2 <= $length2; $index2++) {
-
                 // store the longest common subsequence length
                 if ($sequence1[$index1 + $start - 1] == $sequence2[$index2 + $start - 1]) {
                     $table[$index1][$index2] = $table[$index1 - 1][$index2 - 1] + 1;
@@ -106,21 +104,17 @@ class Diff
 
         // loop until there are no items remaining in either sequence
         while ($index1 > 0 || $index2 > 0) {
-
             // check what has happened to the items at these indices
             if ($index1 > 0 && $index2 > 0 && $sequence1[$index1 + $start - 1] == $sequence2[$index2 + $start - 1]) {
-
                 // update the diff and the indices
                 $diff[] = array($sequence1[$index1 + $start - 1], self::UNMODIFIED);
                 $index1--;
                 $index2--;
             } elseif ($index2 > 0 && $table[$index1][$index2] == $table[$index1][$index2 - 1]) {
-
                 // update the diff and the indices
                 $diff[] = array($sequence2[$index2 + $start - 1], self::INSERTED);
                 $index2--;
             } else {
-
                 // update the diff and the indices
                 $diff[] = array($sequence1[$index1 + $start - 1], self::DELETED);
                 $index1--;
