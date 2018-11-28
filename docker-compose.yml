@@ -9,7 +9,6 @@ services:
     volumes:
     - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
     - ./php:/php
-    - ./data:/data
 
   nginx:
     image: nginx:1.15.5
