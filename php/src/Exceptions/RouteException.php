@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App\Exceptions;
@@ -8,7 +8,6 @@ use Throwable;
 
 class RouteException extends Exception
 {
-
     private $statusCode;
     private $contentType;
 
@@ -35,5 +34,4 @@ class RouteException extends Exception
     {
         return $this->contentType;
     }
-
 }

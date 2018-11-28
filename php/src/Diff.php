@@ -1,18 +1,16 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App;
 
 class Diff
 {
-
     const UNMODIFIED = 0;
     const DELETED = 1;
     const INSERTED = 2;
 
     public static function compare($string1, $string2, $compareCharacters = false)
     {
-
         $start = 0;
         if ($compareCharacters) {
             $sequence1 = $string1;
@@ -58,7 +56,6 @@ class Diff
 
         // return the diff
         return $diff;
-
     }
 
     public static function compareFiles($file1, $file2, $compareCharacters = false)
@@ -117,25 +114,20 @@ class Diff
                 $diff[] = array($sequence1[$index1 + $start - 1], self::UNMODIFIED);
                 $index1--;
                 $index2--;
-
             } elseif ($index2 > 0 && $table[$index1][$index2] == $table[$index1][$index2 - 1]) {
 
                 // update the diff and the indices
                 $diff[] = array($sequence2[$index2 + $start - 1], self::INSERTED);
                 $index2--;
-
             } else {
 
                 // update the diff and the indices
                 $diff[] = array($sequence1[$index1 + $start - 1], self::DELETED);
                 $index1--;
-
             }
-
         }
 
         // return the diff
         return $diff;
     }
-
 }

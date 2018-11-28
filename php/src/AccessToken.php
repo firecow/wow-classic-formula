@@ -8,7 +8,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class AccessToken
 {
-
     public static function isUserAuthenticated(ServerRequestInterface $request, string $jwtSecret): bool
     {
         $accessToken = self::getAccessToken($request);
@@ -30,7 +29,8 @@ class AccessToken
         return $payload->sub;
     }
 
-    public static function createAccessToken(int $duration, array $userData, string $jwtSecret) {
+    public static function createAccessToken(int $duration, array $userData, string $jwtSecret)
+    {
         $photoId = $userData["photoId"];
         $img = $photoId !== null ? "/photo/$photoId" : null;
         $timeInSeconds = Time::nowInSeconds();
@@ -45,7 +45,8 @@ class AccessToken
         return JWT::encode($payload, $jwtSecret, 'HS256');
     }
 
-    private static function getDecodedPayload(string $jwt, string $jwtSecret) {
+    private static function getDecodedPayload(string $jwt, string $jwtSecret)
+    {
         $payload = JWT::decode($jwt, $jwtSecret, ["HS256"]);
         return $payload;
     }
@@ -67,5 +68,4 @@ class AccessToken
         }
         return null;
     }
-
 }

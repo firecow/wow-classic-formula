@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App;
@@ -8,7 +8,6 @@ use App\Exceptions\FileNotFoundException;
 
 class File
 {
-
     public static function loadFileTextContent(string $filePath): string
     {
         if (!self::fileExists($filePath)) {
@@ -25,5 +24,4 @@ class File
     {
         return file_exists($filePath);
     }
-
 }

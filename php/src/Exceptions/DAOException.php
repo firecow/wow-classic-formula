@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App\Exceptions;
@@ -12,5 +12,4 @@ class DAOException extends Exception
     {
         parent::__construct($message, 500, $previous);
     }
-
 }

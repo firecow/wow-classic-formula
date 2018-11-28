@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App\Encoding;
@@ -7,7 +7,6 @@ use App\Exceptions\JsonException;
 
 class JSON
 {
-
     public static function encode(array $arr): string
     {
         $result = json_encode($arr, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
@@ -28,5 +27,4 @@ class JSON
         }
         return $arr;
     }
-
 }

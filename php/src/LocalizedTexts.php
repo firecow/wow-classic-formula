@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App;
@@ -7,7 +7,6 @@ use App\Encoding\JSON;
 
 class LocalizedTexts
 {
-
     private $localizedTextsData;
     private $languageCode;
 
@@ -26,5 +25,4 @@ class LocalizedTexts
         }
         return "[[[[$key]]]]]";
     }
-
 }

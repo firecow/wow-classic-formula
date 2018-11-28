@@ -1,11 +1,10 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App;
 
 class Config
 {
-
     private $configData;
 
     public function __construct()
@@ -46,5 +45,4 @@ class Config
     {
         return $this->configData["jwt"]["secret"];
     }
-
 }

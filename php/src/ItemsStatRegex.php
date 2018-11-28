@@ -1,12 +1,10 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App;
 
-
 class ItemsStatRegex
 {
-
     public static $array = [
         "stamina" => [
             "regex" => "([\d|\.]*) Stamina",
@@ -112,5 +110,4 @@ class ItemsStatRegex
         ]
 
     ];
-
 }

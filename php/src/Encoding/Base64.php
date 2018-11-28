@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App\Encoding;
@@ -7,7 +7,6 @@ use Exception;
 
 class Base64
 {
-
     public static function encode(string $str): string
     {
         return base64_encode($str);
@@ -37,5 +36,4 @@ class Base64
         }
         return Base64::decode(strtr($str, "-_", "+/"));
     }
-
 }

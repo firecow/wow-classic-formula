@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App;
@@ -26,7 +26,8 @@ class SQL
         $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     }
 
-    public function quote(string $str): string {
+    public function quote(string $str): string
+    {
         return $this->pdo->quote($str);
     }
 
@@ -147,5 +148,4 @@ class SQL
         }
         return $columnValue;
     }
-
 }

@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace App;
@@ -11,7 +11,6 @@ use Twig\TwigFilter;
 
 class Context
 {
-
     private $twig;
     private $config;
     private $random;
@@ -85,5 +84,4 @@ class Context
     {
         return $this->random;
     }
-
 }
