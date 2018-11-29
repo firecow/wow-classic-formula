@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 
 namespace Routes;
@@ -10,7 +10,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class LayoutRoute
 {
-
     public function executeRoute(Context $ctx, ServerRequest $request, array $args): ResponseInterface
     {
         $queryParams = $request->getQueryParams();
