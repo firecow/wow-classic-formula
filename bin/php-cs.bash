@@ -5,5 +5,5 @@ docker run --rm -t \
     --volume "/${PWD}/php/vendor:/app/vendor" \
     -w "//app/" \
     php:7.2-cli \
-    ./vendor/bin/phpcs --standard=PSR1,PSR2 src/ fragments/ \
+    ./vendor/bin/phpcs --report-width=auto --standard=PSR1,PSR2 src/ fragments/ \
 

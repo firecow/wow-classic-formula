@@ -25,15 +25,17 @@ class Context
 
         $localizedTexts = new LocalizedTexts();
         $this->localizedTexts = $localizedTexts;
-        $loader = new FilesystemLoader("/");
-        $this->twig = new Environment($loader);
-        $this->twig->addFilter(new TwigFilter('localize', function (string $localizationKey, ...$args) use ($localizedTexts) {
-            return $localizedTexts->getText($localizationKey, ...$args);
-        }));
-
-        $this->twig->addFilter(new TwigFilter('spacify', function (string $str) {
-            return $Words = preg_replace('/(?<!\ )[A-Z1-9]/', ' $0', $str);
-        }));
+        $this->twig = new Environment(new FilesystemLoader("/"));
+        $this->twig->addFilter(
+            new TwigFilter('localize', function (string $localizationKey, ...$args) use ($localizedTexts) {
+                return $localizedTexts->getText($localizationKey, ...$args);
+            })
+        );
+        $this->twig->addFilter(
+            new TwigFilter('spacify', function (string $str) {
+                return $Words = preg_replace('/(?<!\ )[A-Z1-9]/', ' $0', $str);
+            })
+        );
     }
 
     protected function getConfig(): Config
