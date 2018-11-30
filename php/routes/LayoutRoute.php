@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Routes;
@@ -12,11 +13,10 @@ class LayoutRoute
 {
     public function executeRoute(Context $ctx, ServerRequest $request, array $args): ResponseInterface
     {
-        $queryParams = $request->getQueryParams();
+//        $queryParams = $request->getQueryParams();
+//        error_log(json_encode($queryParams));
 
-        //error_log(json_encode($queryParams));
-
-        $data = array(
+        $data = [
             "classes" => ["Priest", "Rogue", "Warrior", "Druid", "Mage", "Warlock", "Paladin", "Shaman"],
 
             "attributes" => [
@@ -28,7 +28,7 @@ class LayoutRoute
                 "Healers" => ["healing", "mana5", "holyCrit"],
                 "Resistance" => ["frostRes", "fireRes", "shadowRes", "natureRes"],
             ]
-        );
+        ];
         $html = $ctx->render("routes/LayoutRoute.twig", $data);
         return new HtmlTextResponse($html);
     }

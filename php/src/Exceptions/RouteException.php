@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Exceptions;
@@ -18,7 +19,7 @@ class RouteException extends Exception
      * @param string $contentType
      * @param Throwable|null $previous
      */
-    public function __construct(string $message, int $statusCode, string $contentType, Throwable $previous = null)
+    public function __construct(string $message, int $statusCode, string $contentType, ?Throwable $previous = null)
     {
         parent::__construct($message, 0, $previous);
         $this->statusCode = $statusCode;

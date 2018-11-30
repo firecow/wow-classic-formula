@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Exception;
@@ -15,7 +17,7 @@ class AccessToken
             return false;
         }
 
-        $payload =  self::getDecodedPayload($accessToken, $jwtSecret);
+        $payload = self::getDecodedPayload($accessToken, $jwtSecret);
         return $payload->sub != null;
     }
 
@@ -47,8 +49,7 @@ class AccessToken
 
     private static function getDecodedPayload(string $jwt, string $jwtSecret)
     {
-        $payload = JWT::decode($jwt, $jwtSecret, ["HS256"]);
-        return $payload;
+        return JWT::decode($jwt, $jwtSecret, ["HS256"]);
     }
 
     private static function getAccessToken(ServerRequestInterface $request): ?string

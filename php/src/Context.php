@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -33,7 +34,7 @@ class Context
         );
         $this->twig->addFilter(
             new TwigFilter('spacify', function (string $str) {
-                return $Words = preg_replace('/(?<!\ )[A-Z1-9]/', ' $0', $str);
+                return preg_replace('/(?<!\ )[A-Z1-9]/', ' $0', $str);
             })
         );
     }

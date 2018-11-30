@@ -1,13 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
 
 class Diff
 {
-    const UNMODIFIED = 0;
-    const DELETED = 1;
-    const INSERTED = 2;
+    public const UNMODIFIED = 0;
+    public const DELETED = 1;
+    public const INSERTED = 2;
 
     public static function compare($string1, $string2, $compareCharacters = false)
     {
@@ -43,15 +44,15 @@ class Diff
         $partialDiff = self::generatePartialDiff($table, $sequence1, $sequence2, $start);
 
         // generate the full diff
-        $diff = array();
+        $diff = [];
         for ($index = 0; $index < $start; $index++) {
-            $diff[] = array($sequence1[$index], self::UNMODIFIED);
+            $diff[] = [$sequence1[$index], self::UNMODIFIED];
         }
         while (count($partialDiff) > 0) {
             $diff[] = array_pop($partialDiff);
         }
         for ($index = $end1 + 1; $index < ($compareCharacters ? strlen($sequence1) : count($sequence1)); $index++) {
-            $diff[] = array($sequence1[$index], self::UNMODIFIED);
+            $diff[] = [$sequence1[$index], self::UNMODIFIED];
         }
 
         // return the diff
@@ -71,12 +72,12 @@ class Diff
         $length2 = $end2 - $start + 1;
 
         // initialise the table
-        $table = array(array_fill(0, $length2 + 1, 0));
+        $table = [array_fill(0, $length2 + 1, 0)];
 
         // loop over the rows
         for ($index1 = 1; $index1 <= $length1; $index1++) {
             // create the new row
-            $table[$index1] = array(0);
+            $table[$index1] = [0];
 
             // loop over the columns
             for ($index2 = 1; $index2 <= $length2; $index2++) {
@@ -96,7 +97,7 @@ class Diff
     private static function generatePartialDiff($table, $sequence1, $sequence2, $start)
     {
         //  initialise the diff
-        $diff = array();
+        $diff = [];
 
         // initialise the indices
         $index1 = count($table) - 1;
@@ -107,16 +108,16 @@ class Diff
             // check what has happened to the items at these indices
             if ($index1 > 0 && $index2 > 0 && $sequence1[$index1 + $start - 1] == $sequence2[$index2 + $start - 1]) {
                 // update the diff and the indices
-                $diff[] = array($sequence1[$index1 + $start - 1], self::UNMODIFIED);
+                $diff[] = [$sequence1[$index1 + $start - 1], self::UNMODIFIED];
                 $index1--;
                 $index2--;
             } elseif ($index2 > 0 && $table[$index1][$index2] == $table[$index1][$index2 - 1]) {
                 // update the diff and the indices
-                $diff[] = array($sequence2[$index2 + $start - 1], self::INSERTED);
+                $diff[] = [$sequence2[$index2 + $start - 1], self::INSERTED];
                 $index2--;
             } else {
                 // update the diff and the indices
-                $diff[] = array($sequence1[$index1 + $start - 1], self::DELETED);
+                $diff[] = [$sequence1[$index1 + $start - 1], self::DELETED];
                 $index1--;
             }
         }

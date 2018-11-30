@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -40,10 +41,10 @@ class ItemsStatRegex
             "regex" => "Speed ([\d|\.]*)"
         ],
         "dps" => [
-            "regex" => "([\d|\.]*) damage per second" ,
+            "regex" => "([\d|\.]*) damage per second",
         ],
         "physicalCrit" => [
-            "regex" => "Improves your chance to get a critical strike by ([\d|\.]*)%" ,
+            "regex" => "Improves your chance to get a critical strike by ([\d|\.]*)%",
         ],
         "physicalHit" => [
             "regex" => "Improves your chance to hit by ([\d|\.]*)%"

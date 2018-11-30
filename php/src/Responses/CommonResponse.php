@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Responses;
@@ -7,7 +8,7 @@ use GuzzleHttp\Psr7\Response;
 
 class CommonResponse extends Response
 {
-    public function __construct(int $statusCode, string $body, array $headers = array())
+    public function __construct(int $statusCode, string $body, array $headers = [])
     {
         parent::__construct($statusCode, $headers, $body);
     }
