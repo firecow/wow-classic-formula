@@ -1,0 +1,9 @@
+# easy-coding-standard.yml
+imports:
+  - { resource: 'vendor/symplify/easy-coding-standard/config/clean-code.yml' }
+  - { resource: 'vendor/symplify/easy-coding-standard/config/php71.yml' }
+  - { resource: 'vendor/symplify/easy-coding-standard/config/psr12.yml' }
+
+parameters:
+  exclude_checkers:
+    - 'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff'
