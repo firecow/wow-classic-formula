@@ -7,3 +7,7 @@ imports:
 parameters:
   exclude_checkers:
     - 'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff'
+
+
+services:
+  PHP_CodeSniffer\Standards\Squiz\Sniffs\PHP\GlobalKeywordSniff: ~
