@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Routes;
 
 use App\Context;
+use App\PredefinedSpecs;
 use App\Responses\HtmlTextResponse;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Http\Message\ResponseInterface;
@@ -27,7 +28,8 @@ class LayoutRoute
                 "Caster" => ["spellDmg", "spellCrit", "spellHit", "shadowDmg", "fireDmg", "frostDmg", "arcaneDmg", "natureDmg"],
                 "Healers" => ["healing", "mana5", "holyCrit"],
                 "Resistance" => ["frostRes", "fireRes", "shadowRes", "natureRes"],
-            ]
+            ],
+            "predefinedSpecs" => PredefinedSpecs::$array
         ];
         $html = $ctx->render("routes/LayoutRoute.twig", $data);
         return new HtmlTextResponse($html);
