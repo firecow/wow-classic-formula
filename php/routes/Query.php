@@ -30,26 +30,27 @@ class Query
         }
         $formula = join(" + ", $formula);
 
-        error_log(json_encode($formula));
-
         $sql = $ctx->createSQL();
 
         $statement = "
-          SELECT item_stats.*, ($formula) as gearpoint, location
+          SELECT item_stats.*, ($formula) as gearpoint, location, cts.slotName, cts.typeName
             FROM item_stats
-              JOIN item_slots
-                ON item_slots.slotName = item_stats.slotName
-              JOIN class_type_slot ct 
-                ON item_stats.slotName = ct.slotName AND item_stats.typeName = ct.typeName
-              LEFT JOIN item_classes
-                ON item_classes.itemId = item_stats.itemId
-              LEFT JOIN item_locations
-                ON item_locations.itemId = item_stats.itemId
+              JOIN item_slots slots
+                ON slots.slotName = item_stats.slotName
+              JOIN class_type_slot cts 
+                ON item_stats.slotName = cts.slotName AND item_stats.typeName = cts.typeName
+              LEFT JOIN item_classes classes
+                ON classes.itemId = item_stats.itemId
+              LEFT JOIN item_locations locations
+                ON locations.itemId = item_stats.itemId
           WHERE 
-            (item_classes.className = '$class' OR item_classes.className IS NULL)
-          ORDER BY item_slots.position ASC, gearpoint DESC 
+            cts.className = '$class' AND
+            (classes.className = ? OR classes.className IS NULL)
+          ORDER BY slots.position ASC, gearpoint DESC 
         ";
-        $iter = $sql->execute($statement, []);
+        $iter = $sql->execute($statement, [
+            $class
+        ]);
         $slots = [];
         foreach ($iter as $row) {
             if ($row['gearpoint'] == 0) {
