@@ -19,7 +19,6 @@ require 'error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
-// TODO: BOP/BOE
 // TODO: Fishing, Mining, Attack Power against (xxx)
 // TODO: Buttons to filter items for specific patches.
 // TODO: Quest/Drop/PVP... More granulated locations.
