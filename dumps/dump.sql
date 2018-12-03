@@ -9,6 +9,28 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+DROP TABLE IF EXISTS `class_type_slot`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `class_type_slot` (
+  `className` varchar(50) NOT NULL,
+  `typeName` varchar(50) NOT NULL,
+  `slotName` varchar(50) NOT NULL,
+  PRIMARY KEY (`className`,`typeName`,`slotName`),
+  KEY `class_types_item_types_typeName_fk` (`typeName`),
+  KEY `class_types_item_slots_slotName_fk` (`slotName`),
+  CONSTRAINT `class_types_item_slots_slotName_fk` FOREIGN KEY (`slotName`) REFERENCES `item_slots` (`slotName`),
+  CONSTRAINT `class_types_item_types_typeName_fk` FOREIGN KEY (`typeName`) REFERENCES `item_types` (`typeName`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+INSERT INTO `class_type_slot` VALUES ('Priest','Cloth','Head');
+INSERT INTO `class_type_slot` VALUES ('Priest','Dagger','Main Hand');
+INSERT INTO `class_type_slot` VALUES ('Priest','Dagger','One-Hand');
+INSERT INTO `class_type_slot` VALUES ('Priest','Held In Off-Hand','Held In Off-Hand');
+INSERT INTO `class_type_slot` VALUES ('Priest','Mace','Main Hand');
+INSERT INTO `class_type_slot` VALUES ('Priest','Mace','One-Hand');
+INSERT INTO `class_type_slot` VALUES ('Priest','Staff','Two-Hand');
 DROP TABLE IF EXISTS `item_classes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -687,7 +709,7 @@ CREATE TABLE `item_stats` (
   `physicalCrit` int(11) DEFAULT NULL,
   `physicalHit` int(11) DEFAULT NULL,
   `spellCrit` int(11) DEFAULT NULL,
-  `spellCritHoly` int(11) NOT NULL DEFAULT 0,
+  `holyCrit` int(11) NOT NULL DEFAULT 0,
   `spellHit` int(11) DEFAULT NULL,
   `spellDmg` int(11) DEFAULT NULL,
   `spellDmgShadow` int(11) DEFAULT NULL,
