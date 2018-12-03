@@ -52,7 +52,7 @@ class ItemsStatRegex
         "spellCrit" => [
             "regex" => "Improves your chance to get a critical strike with spells by ([\d|\.]*)%"
         ],
-        "spellCritHoly" => [
+        "holyCrit" => [
             "regex" => "Increases the critical effect chance of your Holy spells by ([\d|\.]*)%"
         ],
         "spellHit" => [

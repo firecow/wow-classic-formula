@@ -1,0 +1,26 @@
+
+<div id="content" class="ui grid">
+    {% for slotName, items in slots %}
+    <div class="ui column width-medium">
+        <div class="ui styled accordion fluid">
+            <div class="title">
+                <i class="dropdown icon"></i>
+                {{ slotName }}
+            </div>
+            <div class="content active">
+                <table class="ui striped small very compact celled table">
+                    <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td><img class="ui pico rounded image" src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_24.jpg"/></td>
+                        <td data-label="ItemName" class="{{ item.rarity }}">{{ item.itemName }}</td>
+                        <td data-label="Points">{{ item.gearpoint }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

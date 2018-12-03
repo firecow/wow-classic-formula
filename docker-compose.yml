@@ -13,7 +13,7 @@ services:
   nginx:
     image: nginx:1.15.5
     ports:
-    - 3341:80
+    - 80:80
     volumes:
     - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     - ./nginx/public:/var/www/html/public:ro

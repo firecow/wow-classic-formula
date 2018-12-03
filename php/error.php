@@ -21,6 +21,7 @@ function exceptionHandler(Throwable $exception)
     header("HTTP/1.1 500 Internal Server Error");
     header("Content-Type: text/plain;charset=utf-8");
     echo("$exception");
+    error_log("$exception");
 }
 
 function shutdownFunction() {
@@ -39,6 +40,7 @@ function shutdownFunction() {
         header("HTTP/1.1 500 Internal Server Error");
         header("Content-Type: text/plain;charset=utf-8");
         echo("$exception");
+        error_log("$exception");
     }
 }
 
