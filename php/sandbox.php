@@ -59,7 +59,28 @@ $classMap = [
         ["typeName" => "", "slotName" => ""]
     ],
     "Warrior" => [
-        ["typeName" => "", "slotName" => ""]
+        ["typeName" => "Fist Weapon", "slotName" => "Main Hand"],
+        ["typeName" => "Fist Weapon", "slotName" => "One-hand"],
+        ["typeName" => "Fist Weapon", "slotName" => "Off Hand"],
+
+        ["typeName" => "Mace", "slotName" => "Main Hand"],
+        ["typeName" => "Mace", "slotName" => "One-hand"],
+        ["typeName" => "Mace", "slotName" => "Off Hand"],
+        ["typeName" => "Mace", "slotName" => "Two-hand"],
+
+        ["typeName" => "Sword", "slotName" => "Main Hand"],
+        ["typeName" => "Sword", "slotName" => "One-hand"],
+        ["typeName" => "Sword", "slotName" => "Off Hand"],
+        ["typeName" => "Sword", "slotName" => "Two-hand"],
+
+        ["typeName" => "Axe", "slotName" => "Main Hand"],
+        ["typeName" => "Axe", "slotName" => "One-hand"],
+        ["typeName" => "Axe", "slotName" => "Off Hand"],
+        ["typeName" => "Axe", "slotName" => "Two-hand"],
+
+        ["typeName" => "Dagger", "slotName" => "Main Hand"],
+        ["typeName" => "Dagger", "slotName" => "One-hand"],
+        ["typeName" => "Dagger", "slotName" => "Off Hand"],
     ],
     "Rogue" => [
         ["typeName" => "Fist Weapon", "slotName" => "Main Hand"],
