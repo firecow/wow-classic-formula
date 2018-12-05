@@ -47,15 +47,82 @@ foreach ($classMap as $className => $types) {
 // Weapons, Shields, Held in offhand
 $classMap = [
     "Paladin" => [
-        ["typeName" => "", "slotName" => ""]
+        ["typeName" => "Mace", "slotName" => "Main Hand"],
+        ["typeName" => "Mace", "slotName" => "One-hand"],
+        ["typeName" => "Mace", "slotName" => "Off Hand"],
+        ["typeName" => "Mace", "slotName" => "Two-hand"],
+
+        ["typeName" => "Sword", "slotName" => "Main Hand"],
+        ["typeName" => "Sword", "slotName" => "One-hand"],
+        ["typeName" => "Sword", "slotName" => "Off Hand"],
+        ["typeName" => "Sword", "slotName" => "Two-hand"],
+
+        ["typeName" => "Axe", "slotName" => "Main Hand"],
+        ["typeName" => "Axe", "slotName" => "One-hand"],
+        ["typeName" => "Axe", "slotName" => "Off Hand"],
+        ["typeName" => "Axe", "slotName" => "Two-hand"],
+
+        ["typeName" => "Polearm", "slotName" => "Two-hand"],
+
+        ["typeName" => "Libram", "slotName" => "Relic"],
+        ["typeName" => "Shield", "slotName" => "Off Hand"],
     ],
     "Shaman" => [
-        ["typeName" => "", "slotName" => ""]
+        ["typeName" => "Fist Weapon", "slotName" => "Main Hand"],
+        ["typeName" => "Fist Weapon", "slotName" => "One-hand"],
+        ["typeName" => "Fist Weapon", "slotName" => "Off Hand"],
+
+        ["typeName" => "Dagger", "slotName" => "Main Hand"],
+        ["typeName" => "Dagger", "slotName" => "One-hand"],
+        ["typeName" => "Dagger", "slotName" => "Off Hand"],
+
+        ["typeName" => "Mace", "slotName" => "Main Hand"],
+        ["typeName" => "Mace", "slotName" => "One-hand"],
+        ["typeName" => "Mace", "slotName" => "Off Hand"],
+        ["typeName" => "Mace", "slotName" => "Two-hand"],
+
+        ["typeName" => "Axe", "slotName" => "Main Hand"],
+        ["typeName" => "Axe", "slotName" => "One-hand"],
+        ["typeName" => "Axe", "slotName" => "Off Hand"],
+        ["typeName" => "Axe", "slotName" => "Two-hand"],
+
+        ["typeName" => "Staff", "slotName" => "Two-hand"],
+
+        ["typeName" => "Shield", "slotName" => "Off Hand"],
     ],
     "Druid" => [
-        ["typeName" => "", "slotName" => ""]
+        ["typeName" => "Fist Weapon", "slotName" => "Main Hand"],
+        ["typeName" => "Fist Weapon", "slotName" => "One-hand"],
+        ["typeName" => "Fist Weapon", "slotName" => "Off Hand"],
+
+        ["typeName" => "Dagger", "slotName" => "Main Hand"],
+        ["typeName" => "Dagger", "slotName" => "One-hand"],
+        ["typeName" => "Dagger", "slotName" => "Off Hand"],
+
+        ["typeName" => "Mace", "slotName" => "Main Hand"],
+        ["typeName" => "Mace", "slotName" => "One-hand"],
+        ["typeName" => "Mace", "slotName" => "Off Hand"],
+        ["typeName" => "Mace", "slotName" => "Two-hand"],
+
+        ["typeName" => "Polearm", "slotName" => "Two-hand"],
+        ["typeName" => "Staff", "slotName" => "Two-hand"],
+
+        ["typeName" => "Idol", "slotName" => "Relic"],
     ],
     "Hunter" => [
+        ["typeName" => "Fist Weapon", "slotName" => "Main Hand"],
+        ["typeName" => "Fist Weapon", "slotName" => "One-hand"],
+        ["typeName" => "Fist Weapon", "slotName" => "Off Hand"],
+
+        ["typeName" => "Dagger", "slotName" => "Main Hand"],
+        ["typeName" => "Dagger", "slotName" => "One-hand"],
+        ["typeName" => "Dagger", "slotName" => "Off Hand"],
+
+        ["typeName" => "Sword", "slotName" => "Main Hand"],
+        ["typeName" => "Sword", "slotName" => "One-hand"],
+        ["typeName" => "Sword", "slotName" => "Off Hand"],
+        ["typeName" => "Sword", "slotName" => "Two-hand"],
+
         ["typeName" => "Axe", "slotName" => "Main Hand"],
         ["typeName" => "Axe", "slotName" => "One-hand"],
         ["typeName" => "Axe", "slotName" => "Off Hand"],
@@ -93,10 +160,13 @@ $classMap = [
         ["typeName" => "Axe", "slotName" => "Two-hand"],
 
         ["typeName" => "Polearm", "slotName" => "Two-hand"],
+        ["typeName" => "Staff", "slotName" => "Two-hand"],
 
         ["typeName" => "Bow", "slotName" => "Ranged"],
         ["typeName" => "Gun", "slotName" => "Ranged"],
         ["typeName" => "Crossbow", "slotName" => "Ranged"],
+
+        ["typeName" => "Shield", "slotName" => "Off Hand"],
     ],
     "Rogue" => [
         ["typeName" => "Fist Weapon", "slotName" => "Main Hand"],
@@ -123,10 +193,10 @@ $classMap = [
         ["typeName" => "Staff", "slotName" => "Two-hand"],
         ["typeName" => "Held In Off-Hand", "slotName" => "Held In Off-Hand"],
         ["typeName" => "Wand", "slotName" => "Ranged"],
-        ["typeName" => "Mace", "slotName" => "Main Hand"],
-        ["typeName" => "Mace", "slotName" => "One-hand"],
+
         ["typeName" => "Dagger", "slotName" => "Main Hand"],
         ["typeName" => "Dagger", "slotName" => "One-hand"],
+
         ["typeName" => "Sword", "slotName" => "Main Hand"],
         ["typeName" => "Sword", "slotName" => "One-hand"]
     ],
@@ -134,10 +204,10 @@ $classMap = [
         ["typeName" => "Staff", "slotName" => "Two-hand"],
         ["typeName" => "Held In Off-Hand", "slotName" => "Held In Off-Hand"],
         ["typeName" => "Wand", "slotName" => "Ranged"],
-        ["typeName" => "Mace", "slotName" => "Main Hand"],
-        ["typeName" => "Mace", "slotName" => "One-hand"],
+
         ["typeName" => "Dagger", "slotName" => "Main Hand"],
         ["typeName" => "Dagger", "slotName" => "One-hand"],
+
         ["typeName" => "Sword", "slotName" => "Main Hand"],
         ["typeName" => "Sword", "slotName" => "One-hand"]
     ],
@@ -145,9 +215,18 @@ $classMap = [
         ["typeName" => "Staff", "slotName" => "Two-hand"],
         ["typeName" => "Held In Off-Hand", "slotName" => "Held In Off-Hand"],
         ["typeName" => "Wand", "slotName" => "Ranged"],
+
         ["typeName" => "Mace", "slotName" => "Main Hand"],
         ["typeName" => "Mace", "slotName" => "One-hand"],
+
         ["typeName" => "Dagger", "slotName" => "Main Hand"],
         ["typeName" => "Dagger", "slotName" => "One-hand"]
     ],
 ];
+
+// Weapons
+foreach ($classMap as $className => $datas) {
+    foreach ($datas as $data) {
+        $sql->execute("REPLACE INTO class_type_slot VALUES(?, ?, ?)", [$className, $data["typeName"], $data["slotName"]]);
+    }
+}
