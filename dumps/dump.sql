@@ -31,6 +31,7 @@ INSERT INTO `class_type_slot` VALUES ('Priest','Held In Off-Hand','Held In Off-H
 INSERT INTO `class_type_slot` VALUES ('Priest','Mace','Main Hand');
 INSERT INTO `class_type_slot` VALUES ('Priest','Mace','One-Hand');
 INSERT INTO `class_type_slot` VALUES ('Priest','Staff','Two-Hand');
+INSERT INTO `class_type_slot` VALUES ('Warrior','Plate','Head');
 DROP TABLE IF EXISTS `item_classes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
