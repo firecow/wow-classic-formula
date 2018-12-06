@@ -20,7 +20,6 @@ $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
 // TODO: Icon name
-// TODO: Royal Seal of Eldaras (?:Requires|Equip)
 // TODO: Fishing, Mining, Attack Power against (xxx)
 // TODO: Buttons to filter items for specific patches.
 // TODO: Quest/Drop/PVP... More granulated locations.
@@ -169,7 +168,7 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     $sql->execute($query, $statsParsed);
 
     // Insert, update, rmote classes for item.
-    if (preg_match("/Classes: (.*?)Requires/", $strippedContents, $matches)) {
+    if (preg_match("/Classes: (.*?)(?:Requires|Equip|$)/", $strippedContents, $matches)) {
         foreach(explode(",", $matches[1]) as $className) {
             $query = "INSERT INTO item_classes (itemId, itemName, className) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE itemId=VALUES(itemId), className=VALUES(className), itemName=VALUES(itemName)";
             $sql->execute($query, [$itemId, $itemName, trim($className)]);

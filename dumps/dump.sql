@@ -544,6 +544,15 @@ INSERT INTO `item_classes` VALUES (18454,'Sergeant Major\'s Dragonhide Armsplint
 INSERT INTO `item_classes` VALUES (18456,'Sergeant Major\'s Silk Cuffs','Mage');
 INSERT INTO `item_classes` VALUES (18456,'Sergeant Major\'s Silk Cuffs','Priest');
 INSERT INTO `item_classes` VALUES (18456,'Sergeant Major\'s Silk Cuffs','Warlock');
+INSERT INTO `item_classes` VALUES (18465,'Royal Seal of Eldre\'Thalas','Rogue');
+INSERT INTO `item_classes` VALUES (18466,'Royal Seal of Eldre\'Thalas','Warrior');
+INSERT INTO `item_classes` VALUES (18467,'Royal Seal of Eldre\'Thalas','Warlock');
+INSERT INTO `item_classes` VALUES (18468,'Royal Seal of Eldre\'Thalas','Mage');
+INSERT INTO `item_classes` VALUES (18469,'Royal Seal of Eldre\'Thalas','Priest');
+INSERT INTO `item_classes` VALUES (18470,'Royal Seal of Eldre\'Thalas','Druid');
+INSERT INTO `item_classes` VALUES (18471,'Royal Seal of Eldre\'Thalas','Shaman');
+INSERT INTO `item_classes` VALUES (18472,'Royal Seal of Eldre\'Thalas','Paladin');
+INSERT INTO `item_classes` VALUES (18473,'Royal Seal of Eldre\'Thalas','Hunter');
 INSERT INTO `item_classes` VALUES (18608,'Benediction','Priest');
 INSERT INTO `item_classes` VALUES (18609,'Anathema','Priest');
 INSERT INTO `item_classes` VALUES (18646,'The Eye of Divinity','Priest');
@@ -2807,6 +2816,7 @@ INSERT INTO `item_stats` VALUES (18467,'Royal Seal of Eldre\'Thalas','Trinket','
 INSERT INTO `item_stats` VALUES (18468,'Royal Seal of Eldre\'Thalas','Trinket','Trinket',1,'pickup',62,0,'rare',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,10,0,0);
 INSERT INTO `item_stats` VALUES (18469,'Royal Seal of Eldre\'Thalas','Trinket','Trinket',1,'pickup',62,0,'rare',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,33,0,0,0,0,0,0,10,0,0);
 INSERT INTO `item_stats` VALUES (18470,'Royal Seal of Eldre\'Thalas','Trinket','Trinket',1,'pickup',62,0,'rare',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,44,0,0,0,0,0,0,10,0,0);
+INSERT INTO `item_stats` VALUES (18471,'Royal Seal of Eldre\'Thalas','Trinket','Trinket',1,'pickup',62,0,'rare',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0);
 INSERT INTO `item_stats` VALUES (18472,'Royal Seal of Eldre\'Thalas','Trinket','Trinket',1,'pickup',62,0,'rare',0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22,0,0,0,0,0,0,10,0,0);
 INSERT INTO `item_stats` VALUES (18473,'Royal Seal of Eldre\'Thalas','Trinket','Trinket',1,'pickup',62,0,'rare',0,0,0,0,0,0,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0);
 INSERT INTO `item_stats` VALUES (18478,'Hyena Hide Jerkin','Chest','Leather',0,'pickup',60,55,'uncommon',13,0,20,0,0,154,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
