@@ -362,15 +362,25 @@ CREATE TABLE `item_classes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO `item_classes` VALUES (7514,'Icefury Wand','Mage');
+INSERT INTO `item_classes` VALUES (7515,'Celestial Orb','Mage');
 INSERT INTO `item_classes` VALUES (8345,'Wolfshead Helm','Druid');
+INSERT INTO `item_classes` VALUES (9517,'Celestial Stave','Mage');
+INSERT INTO `item_classes` VALUES (9607,'Bastion of Stormwind','Paladin');
 INSERT INTO `item_classes` VALUES (10572,'Freezing Shard','Mage');
 INSERT INTO `item_classes` VALUES (10766,'Plaguerot Sprig','Mage');
+INSERT INTO `item_classes` VALUES (13968,'Eye of the Beast','Druid');
+INSERT INTO `item_classes` VALUES (13968,'Eye of the Beast','Mage');
+INSERT INTO `item_classes` VALUES (13968,'Eye of the Beast','Priest');
+INSERT INTO `item_classes` VALUES (13968,'Eye of the Beast','Shaman');
+INSERT INTO `item_classes` VALUES (13968,'Eye of the Beast','Warlock');
 INSERT INTO `item_classes` VALUES (14146,'Gloves of Spell Mastery','Mage');
 INSERT INTO `item_classes` VALUES (14146,'Gloves of Spell Mastery','Priest');
 INSERT INTO `item_classes` VALUES (14146,'Gloves of Spell Mastery','Warlock');
 INSERT INTO `item_classes` VALUES (14152,'Robe of the Archmage','Mage');
 INSERT INTO `item_classes` VALUES (14153,'Robe of the Void','Warlock');
 INSERT INTO `item_classes` VALUES (14154,'Truefaith Vestments','Priest');
+INSERT INTO `item_classes` VALUES (15108,'Orb of Dar\'Orahil','Warlock');
 INSERT INTO `item_classes` VALUES (16437,'Marshal\'s Silk Footwraps','Mage');
 INSERT INTO `item_classes` VALUES (16440,'Marshal\'s Silk Gloves','Mage');
 INSERT INTO `item_classes` VALUES (16441,'Field Marshal\'s Coronet','Mage');
