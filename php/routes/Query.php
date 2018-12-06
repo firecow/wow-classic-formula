@@ -44,6 +44,7 @@ class Query
               LEFT JOIN item_locations locations
                 ON locations.itemId = item_stats.itemId
           WHERE 
+            item_stats.rarity IN ('uncommon', 'rare', 'epic', 'legendary') AND
             cts.className = '$class' AND
             (classes.className = ? OR classes.className IS NULL)
           ORDER BY slots.position ASC, gearpoint DESC 
@@ -61,6 +62,10 @@ class Query
             if (!isset($slots[$slotName])) {
                 $slots[$slotName] = [];
             }
+            if (count($slots[$slotName]) > 20) {
+                continue;
+            }
+
             $slots[$slotName][] = $row;
         }
 

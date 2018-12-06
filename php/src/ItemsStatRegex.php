@@ -28,7 +28,7 @@ class ItemsStatRegex
         "attackPower" => [
             "regex" => "([\d|\.]*) Attack Power\.",
         ],
-        "rangedAttackPower" => [
+        "rangedPower" => [
             "regex" => "\+([\d|\.]*) ranged Attack Power\.",
         ],
         "minDmg" => [
@@ -43,10 +43,10 @@ class ItemsStatRegex
         "dps" => [
             "regex" => "([\d|\.]*) damage per second",
         ],
-        "physicalCrit" => [
+        "crit" => [
             "regex" => "Improves your chance to get a critical strike by ([\d|\.]*)%",
         ],
-        "physicalHit" => [
+        "hit" => [
             "regex" => "Improves your chance to hit by ([\d|\.]*)%"
         ],
         "spellCrit" => [
@@ -61,19 +61,19 @@ class ItemsStatRegex
         "spellDmg" => [
             "regex" => "Increases damage and healing done by magical spells and effects by up to ([\d|\.]*)\."
         ],
-        "spellDmgShadow" => [
+        "shadowDmg" => [
             "regex" => "Increases damage done by Shadow spells and effects by up to ([\d|\.]*)\."
         ],
-        "spellDmgFire" => [
+        "fireDmg" => [
             "regex" => "Increases damage done by Fire spells and effects by up to ([\d|\.]*)\."
         ],
-        "spellDmgFrost" => [
+        "frostDmg" => [
             "regex" => "Increases damage done by Frost spells and effects by up to ([\d|\.]*)\."
         ],
-        "spellDmgArcane" => [
+        "arcaneDmg" => [
             "regex" => "Increases damage done by Arcane spells and effects by up to ([\d|\.]*)\."
         ],
-        "spellDmgNature" => [
+        "natureDmg" => [
             "regex" => "Increases damage done by Nature spells and effects by up to ([\d|\.]*)\."
         ],
         "healing" => [

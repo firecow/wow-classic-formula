@@ -19,19 +19,26 @@ require 'error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
-// TODO: Icon name
+// TODO: Weapon Skill attributes
+// TODO: Atiesh, Greatstaff of the Guardian triple
+// TODO: Hover tooltip
+// TODO: Random Bonus
+// TODO: Fails on comma sepator
+// TODO: Manually add averages over items use effects.
+// TODO: Warlocks/Mages/Priests can't dual wield.
+// TODO: Crafted items dublicate (Hide of the wild etc.etc.)
 // TODO: Fishing, Mining, Attack Power against (xxx)
-// TODO: Buttons to filter items for specific patches.
+// TODO: Buttons to filter items for specific patches/timeline
 // TODO: Quest/Drop/PVP... More granulated locations.
 
 libxml_use_internal_errors(true);
 
-$items = $sql->raw("SELECT itemId, itemName FROM item_stats")->fetchAll();
-/*$items = [
-    ["itemId" => 21563],
-    ["itemId" => 1009],
-    ["itemId" => 23319]
-];*/
+$files = scandir("../data/classicdbscrabes/");
+
+$itemIdsToCrawl = [];
+foreach ($files as $file) {
+    $itemIdsToCrawl[] = str_replace(".html", "", $file);
+}
 
 $climate = new CLImate();
 
@@ -43,15 +50,23 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     $itemsStatRegex = ItemsStatRegex::$array;
 
     if (!preg_match('/\<b.*class="\S\d"\>(.*)\<\/b\>/', $contents, $matches)) {
-        $climate->red("No itemName found. ($itemId)\n");
+        unlink("../data/classicdbscrabes/$itemId.html");
+        $climate->red("No itemName found. ($itemId)");
         return;
     }
     $itemName = $matches[1];
 
     if ($element == null) {
-        $climate->red("No dom element found $itemName ($itemId)\n");
+        $climate->red("No dom element found $itemName ($itemId)");
         return;
     }
+
+    $iconName = null;
+    if (!preg_match("/ShowIconName\('(.*)'\)/", $contents, $matches)) {
+        $climate->red("No icon name found $itemName ($itemId)");
+        return;
+    }
+    $iconName = $matches[1];
 
     // Remove Set:
     $strippedContents = $element->textContent;
@@ -112,6 +127,7 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
 
     $statsParsed['itemId'] = $itemId;
     $statsParsed['itemName'] = $itemName;
+    $statsParsed['iconName'] = $iconName;
     $statsParsed['slotName'] = $slotName;
     $statsParsed['typeName'] = $typeName;
     $statsParsed['uniqueItem'] = preg_match('/Unique/', $strippedContents) ? 1 : 0;
@@ -165,7 +181,13 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     }
     $updateKeys = implode(",", $updateKeys);
     $query = "INSERT INTO item_stats ($keys) VALUES (:$keysColon) ON DUPLICATE KEY UPDATE $updateKeys";
-    $sql->execute($query, $statsParsed);
+
+    try {
+        $sql->execute($query, $statsParsed);
+    } catch (Throwable $ex) {
+        $climate->red("---\nItemId: '$itemId'\n$ex");
+        return;
+    }
 
     // Insert, update, rmote classes for item.
     if (preg_match("/Classes: (.*?)(?:Requires|Equip|$)/", $strippedContents, $matches)) {
@@ -179,10 +201,9 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
 $promises = [];
 
 // Initiate http requests.
-foreach ($items as $item) {
-    $itemId = $item['itemId'];
+foreach ($itemIdsToCrawl as $itemId) {
 
-    $path = "../data/$itemId.html";
+    $path = "../data/classicdbscrabes/$itemId.html";
     if (file_exists($path)) {
         $parseAndStoreData(file_get_contents($path), $itemId);
         continue;
@@ -192,7 +213,7 @@ foreach ($items as $item) {
     $promise = $client->requestAsync('GET', "http://classicdb.ch/?item=$itemId");
     $promise->then(function(ResponseInterface $response) use ($parseAndStoreData, $itemId){
         $contents = $response->getBody()->getContents();
-        $path = "../data/$itemId.html";
+        $path = "../data/classicdbscrabes/$itemId.html";
         file_put_contents($path, $contents);
         chown($path, 'www-data');
         chgrp($path, 'www-data');

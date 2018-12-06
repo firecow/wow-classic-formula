@@ -12,7 +12,7 @@
                     <tbody>
                     {% for item in items %}
                     <tr>
-                        <td><img class="ui pico rounded image" src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_24.jpg"/></td>
+                        <td><img class="ui pico rounded image" src="https://wow.zamimg.com/images/wow/icons/large/{{ item.iconName }}.jpg"/></td>
                         <td data-label="ItemName" class="{{ item.rarity }}">{{ item.itemName }}</td>
                         <td data-label="Points">{{ item.gearpoint }}</td>
                     </tr>

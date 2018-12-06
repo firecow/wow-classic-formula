@@ -18,7 +18,7 @@ class LayoutRoute
 //        error_log(json_encode($queryParams));
 
         $data = [
-            "classes" => ["Priest", "Rogue", "Warrior", "Druid", "Mage", "Warlock", "Paladin", "Shaman"],
+            "classes" => ["Priest", "Rogue", "Warrior", "Hunter", "Druid", "Mage", "Warlock", "Paladin", "Shaman"],
 
             "attributes" => [
                 "Core" => ["stamina", "strength", "agility", "spirit", "intellect"],
