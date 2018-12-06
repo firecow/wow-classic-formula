@@ -22,3 +22,19 @@ WowClassicFormula.prototype.submitPressed = function() {
 
     console.log("Submit Pressed");
 };
+
+/**
+ *
+ */
+WowClassicFormula.prototype.specPressed = function(event) {
+
+    $("#i_healing").val("1");
+    $("#i_spellDmg").val("1");
+    $("#i_mana5").val("2.5");
+    $("#i_intellect").val("0.6");
+    $("#i_spirit").val("0.35");
+
+    $('#class').dropdown('set selected', "Priest");
+
+    this.submitPressed();
+};

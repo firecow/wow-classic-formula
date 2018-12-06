@@ -62,7 +62,7 @@ class Query
             if (!isset($slots[$slotName])) {
                 $slots[$slotName] = [];
             }
-            if (count($slots[$slotName]) > 20) {
+            if (count($slots[$slotName]) > 25) {
                 continue;
             }
 

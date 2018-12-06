@@ -9,10 +9,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/accordion.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/popup.js"></script>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/accordion.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/popup.css">
 
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="/style.css">
@@ -21,12 +23,21 @@
 </head>
 <body onload="window.wcf = new WowClassicFormula();">
 
+<div class="ui horizontal list">
+    <div class="item">
+        <div class="ui icon circular button" onclick="wcf.specPressed(event);" data-content="Holy Priest" data-position="bottom center">
+            <img class="ui rounded image" title="Holy Priest" class="ui width-zepto circular image" src="//wow.zamimg.com/images/wow/icons/large/inv_staff_30.jpg">
+        </div>
+
+    </div>
+</div>
+<div class="ui hidden divider"></div>
 <div class="ui styled accordion fluid">
     <div class="title">
         <i class="dropdown icon"></i>
-        Settings
+        Advanced
     </div>
-    <div class="content active">
+    <div class="content">
         <form id="form" class="ui form" onsubmit="return false;">
 
             {% for key, value in attributes %}
@@ -45,7 +56,7 @@
             <div class="ui divider"></div>
             <div class="ui horizontal list">
                 <div class="item width-small">
-                    <div class="ui fluid search selection dropdown">
+                    <div id="class" class="ui fluid search selection dropdown">
                         <input type="hidden" name="class">
                         <div class="default text">Pick Class...</div>
                         <i class="dropdown icon"></i>
@@ -76,6 +87,7 @@
 <script>
     $('.dropdown').dropdown();
     $('.accordion').accordion();
+    $('.button').popup();
 </script>
 </body>
 </html>

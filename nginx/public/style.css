@@ -20,6 +20,11 @@ html, body {
     padding: var(--padding);
 }
 
+.width-zepto {
+    min-width: 50px;
+    max-width: 50px;
+}
+
 .width-pico {
     min-width: 75px;
     max-width: 75px;
