@@ -20,7 +20,6 @@ $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
 // TODO: Weapon Skill attributes
-// TODO: Atiesh, Greatstaff of the Guardian triple
 // TODO: Hover tooltip
 // TODO: Random Bonus
 // TODO: Fails on comma sepator
@@ -198,6 +197,10 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     }
 };
 
+// Truncate tables
+$sql->execute("TRUNCATE item_stats", []);
+$sql->execute("TRUNCATE item_classes", []);
+
 $promises = [];
 
 // Initiate http requests.
@@ -230,7 +233,22 @@ foreach ($itemIdsToCrawl as $itemId) {
 $each = new EachPromise($promises, [
     'concurrency' => 100
 ]);
+
+// Start items refreshing
 $p = $each->promise();
 $p->wait();
+
+// Insert stuff manually
+$sql->execute("INSERT INTO item_classes VALUES (22632, 'Atiesh, Greatstaff of the Guardian', 'Druid')", []);
+$sql->execute("INSERT INTO item_classes VALUES (22631, 'Atiesh, Greatstaff of the Guardian', 'Priest')", []);
+$sql->execute("INSERT INTO item_classes VALUES (22630, 'Atiesh, Greatstaff of the Guardian', 'Warlock')", []);
+$sql->execute("INSERT INTO item_classes VALUES (22589, 'Atiesh, Greatstaff of the Guardian', 'Mage')", []);
+
+$sql->execute("UPDATE item_stats SET stamina = 28, intellect = 28, spirit = 27, healing = 362, spellDmg = 120 WHERE itemId = 22632", []);
+$sql->execute("UPDATE item_stats SET stamina = 28, intellect = 28, spirit = 27, mana5 = 11, healing = 300, attackPower = 420 WHERE itemId = 22631", []);
+$sql->execute("UPDATE item_stats SET stamina = 30, intellect = 29, spellCrit = 2, spellDmg = 183 WHERE itemId = 22630", []);
+$sql->execute("UPDATE item_stats SET stamina = 31, intellect = 32, spirit = 24, spellHit = 2, spellCrit = 2, spellDmg = 150 WHERE itemId = 22589", []);
+
+
 $climate->blue("All done!!!");
 
