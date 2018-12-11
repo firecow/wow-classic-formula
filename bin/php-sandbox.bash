@@ -4,4 +4,4 @@ docker run --rm -t \
     --volume "/${PWD}/php:/php" \
     --network wow-classic-formula_default \
     -w "//php/" \
-    nanoninja/php-fpm:7.2 php sandbox.php \
+    nanoninja/php-fpm:7.2 php cli/sandbox.php \
