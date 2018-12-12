@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 docker run --rm -t \
     --network wow-classic-formula_default \
     mariadb:10.3.8 mysqldump -h sql -proot \
@@ -9,4 +9,4 @@ docker run --rm -t \
     --skip-comments \
     --skip-dump-date \
     --extended-insert=FALSE \
-    wcf > dumps/dump.sql \
+    wcf \

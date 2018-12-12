@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 docker run --rm -t \
     --volume "/${PWD}/php/vendor:/app/vendor" \
     --volume "/${PWD}/php/composer.lock:/app/composer.lock" \
