@@ -19,16 +19,16 @@ require '../error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
+// TODO: Quest/Drop/PVP... More granulated locations.
+// TODO: Crafted items dublicate (Hide of the wild etc.etc.)
 // TODO: Weapon Skill attributes
 // TODO: Hover tooltip
 // TODO: Random Bonus
-// TODO: Fails on comma sepator
 // TODO: Manually add averages over items use effects.
 // TODO: Warlocks/Mages/Priests can't dual wield.
-// TODO: Crafted items dublicate (Hide of the wild etc.etc.)
 // TODO: Fishing, Mining, Attack Power against (xxx)
 // TODO: Buttons to filter items for specific patches/timeline
-// TODO: Quest/Drop/PVP... More granulated locations.
+// TODO: Fails on comma sepator
 
 libxml_use_internal_errors(true);
 

@@ -18,13 +18,13 @@ $json = JSON::decode(file_get_contents("../dumps/instances.json"));
 
 $instances = [
     "Mara",
-    "ST",
     "BRD",
     "DME",
     "DMN",
     "DMW",
     "UBRS",
     "STRAT",
+    "ST",
     "LBRS",
     "SCHOLO",
 ];
@@ -79,3 +79,6 @@ foreach ($json as $atlasKey => $list) {
         echo "Skipping: $atlasKey\n";
     }
 }
+
+
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20717, "Desert Bloom Gloves", "AQ40", "Quest - Armaments of War", 0]);
