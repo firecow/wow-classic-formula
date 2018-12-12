@@ -13,8 +13,8 @@ use GuzzleHttp\Promise\EachPromise;
 use League\CLImate\CLImate;
 use Psr\Http\Message\ResponseInterface;
 
-require '../vendor/autoload.php';
-require '../error.php';
+require '/php/vendor/autoload.php';
+require '/php/error.php';
 
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
