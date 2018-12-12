@@ -6,4 +6,4 @@ docker run --rm -t \
     --volume "/${PWD}/dumps:/dumps" \
     --network wow-classic-formula_default \
     -w "//php/" \
-    nanoninja/php-fpm:7.2 php refresh_locations.php \
+    nanoninja/php-fpm:7.2 php cli/refresh_locations.php \

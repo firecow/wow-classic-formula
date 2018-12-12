@@ -7,8 +7,8 @@ use App\Config;
 use App\Encoding\JSON;
 use App\SQL;
 
-require 'vendor/autoload.php';
-require 'error.php';
+require '../vendor/autoload.php';
+require '../error.php';
 
 
 $config = new Config();

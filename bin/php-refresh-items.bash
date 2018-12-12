@@ -5,4 +5,4 @@ docker run --rm -t \
     --volume "/${PWD}/data:/data" \
     --network wow-classic-formula_default \
     -w "//php/" \
-    nanoninja/php-fpm:7.2 php refresh_items.php \
+    nanoninja/php-fpm:7.2 php cli/refresh_items.php \

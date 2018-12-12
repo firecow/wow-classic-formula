@@ -13,8 +13,8 @@ use GuzzleHttp\Promise\EachPromise;
 use League\CLImate\CLImate;
 use Psr\Http\Message\ResponseInterface;
 
-require 'vendor/autoload.php';
-require 'error.php';
+require '../vendor/autoload.php';
+require '../error.php';
 
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
@@ -33,6 +33,9 @@ $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $conf
 libxml_use_internal_errors(true);
 
 $files = scandir("../data/classicdbscrabes/");
+if ($files === false) {
+    throw new Exception("Dir not found");
+}
 
 $itemIdsToCrawl = [];
 foreach ($files as $file) {
@@ -48,7 +51,7 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
 
     $itemsStatRegex = ItemsStatRegex::$array;
 
-    if (!preg_match('/\<b.*class="\S\d"\>(.*)\<\/b\>/', $contents, $matches)) {
+    if (preg_match('/\<b.*class="\S\d"\>(.*)\<\/b\>/', $contents, $matches) === 0) {
         unlink("../data/classicdbscrabes/$itemId.html");
         $climate->red("No itemName found. ($itemId)");
         return;
@@ -61,7 +64,7 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     }
 
     $iconName = null;
-    if (!preg_match("/ShowIconName\('(.*)'\)/", $contents, $matches)) {
+    if (preg_match("/ShowIconName\('(.*)'\)/", $contents, $matches) === 0) {
         $climate->red("No icon name found $itemName ($itemId)");
         return;
     }
