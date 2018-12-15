@@ -19,6 +19,7 @@ require '/php/error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
+// TODO: Add patch number for each items.
 // TODO: Arnaments of War item locations
 // TODO: Weapon Skill attributes
 // TODO: Hover tooltip
@@ -262,6 +263,7 @@ $sql->execute("UPDATE item_stats SET stamina = 28, intellect = 28, spirit = 27, 
 $sql->execute("UPDATE item_stats SET stamina = 30, intellect = 29, spellCrit = 2, spellDmg = 183 WHERE itemId = 22630", []);
 $sql->execute("UPDATE item_stats SET stamina = 31, intellect = 32, spirit = 24, spellHit = 2, spellCrit = 2, spellDmg = 150 WHERE itemId = 22589", []);
 
-
+// Test items.
+$sql->execute("DELETE FROM item_stats WHERE itemId = ?", [19879]);
 $climate->blue("All done!!!");
 
