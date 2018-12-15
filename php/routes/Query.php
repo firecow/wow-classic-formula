@@ -45,13 +45,16 @@ class Query
                 ON locations.itemId = item_stats.itemId
           WHERE 
             item_stats.rarity IN ('uncommon', 'rare', 'epic', 'legendary') AND
-            cts.className = '$class' AND
+            cts.className = ? AND
             (classes.className = ? OR classes.className IS NULL)
-          ORDER BY slots.position ASC, gearpoint DESC 
+          ORDER BY 
+            slots.position ASC, 
+            gearpoint DESC, 
+            FIELD(`rarity`, 'legendary', 'epic', 'rare', 'uncommon', 'common', 'poor'), 
+            itemLevel DESC,
+            itemName ASC
         ";
-        $iter = $sql->execute($statement, [
-            $class
-        ]);
+        $iter = $sql->execute($statement, [$class, $class]);
         $slots = [];
         foreach ($iter as $row) {
             if ($row['gearpoint'] == 0) {
