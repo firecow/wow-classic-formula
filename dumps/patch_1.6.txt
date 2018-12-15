@@ -1,0 +1,64 @@
+Pattern: Golden Mantle of the Dawn
+Pattern: Dawn Treaders
+Plans: Girdle of the Dawn
+Plans: Gloves of the Dawn
+Pattern: Argent Boots
+Pattern: Argent Shoulders
+Formula: Enchant Bracer – Mana Regeneration
+Formula: Enchant Bracer – Healing
+Formula: Powerful Anti-Venom
+Huge Venom Sac
+Plans: Heavy Timbermaw Belt
+Plans: Heavy Timbermaw Boots
+Pattern: Wisdom of the Timbermaw
+Pattern: Mantle of the Timbermaw
+Pattern: Might of the Timbermaw
+Pattern: Timbermaw Brawlers
+Formula: Enchant Weapon – Agility
+Pattern: Flarecore Robe
+Pattern: Flarecore Leggings
+Pattern: Lava Belt
+Pattern: Chromatic Gauntlets
+Pattern: Corehound Belt
+Pattern: Molten Belt
+Plans: Dark Iron Helm
+Plans: Dark Iron Gauntlets
+Plans: Black Amnesty
+Plans: Blackfury
+Plans: Ebon Hand
+Plans: Blackguard
+Formula: Enchant Weapon – Mighty Spirit
+Formula: Enchant Weapon – Mighty Intellect
+Formula: Enchant Weapon – Strength
+Ace of Beasts
+Two of Beasts
+Three of Beasts
+Four of Beasts
+Five of Beasts
+Six of Beasts
+Seven of Beasts
+Eight of Beasts
+Ace of Warlords
+Two of Warlords
+Three of Warlords
+Four of Warlords
+Five of Warlords
+Six of Warlords
+Seven of Warlords
+Eight of Warlords
+Ace of Elementals
+Two of Elementals
+Three of Elementals
+Four of Elementals
+Five of Elementals
+Six of Elementals
+Seven of Elementals
+Eight of Elementals
+Ace of Portals
+Two of Portals
+Three of Portals
+Four of Portals
+Five of Portals
+Six of Portals
+Seven of Portals
+Eight of Portals
