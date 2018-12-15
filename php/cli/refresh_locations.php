@@ -14,7 +14,7 @@ require '/php/error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
-$json = JSON::decode(file_get_contents("../dumps/instances.json"));
+$json = JSON::decode(file_get_contents("/dumps/instances.json"));
 
 $instances = [
     "Mara",
@@ -80,5 +80,24 @@ foreach ($json as $atlasKey => $list) {
     }
 }
 
+$json = JSON::decode(file_get_contents("/dumps/crafting.en.json"));
+foreach ($json as $atlasKey => $list) {
+    $instanceName = "Crafted";
+
+    foreach ($list as $itemData) {
+        $itemName = preg_replace("/=.*=/", "", $itemData[2]);
+
+        if (!empty($itemName)) {
+            try {
+                $itemId = $sql->fetchColumnInt("SELECT itemId FROM item_stats WHERE itemName = ?", [$itemName]);
+                $sql->execute("REPLACE INTO item_locations VALUES (?, ?, ?, ?, ?)", [$itemId, $itemName, $instanceName, '', 0]);
+            } catch (\App\Exceptions\DAOException $ex) {
+                echo "Exception : ($itemName)\n";
+            }
+        } else {
+            echo "Skipped : ($itemName)\n";
+        }
+    }
+}
 
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20717, "Desert Bloom Gloves", "AQ40", "Quest - Armaments of War", 0]);
