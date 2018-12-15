@@ -215,7 +215,7 @@ foreach ($json as $atlasKey => $list) {
 $json = JSON::decode(file_get_contents("/dumps/factions.json"));
 foreach ($json as $atlasKey => $list) {
 
-    if (!preg_match("/(.*)(?:\d|$])/", $atlasKey, $matches)) {
+    if (!preg_match("/(.*)(?:\d|$)/", $atlasKey, $matches)) {
         echo "No match $atlasKey\n";
         continue;
     }
@@ -234,5 +234,14 @@ foreach ($json as $atlasKey => $list) {
     }
 }
 
-// Items not included in json files.
+// Items not included in json files. These are class specific.
+// AQ Arnaments of War
+// TODO: Add em all
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20717, "Desert Bloom Gloves", "AQ40", "Quest - Armaments of War", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20716, "Sandworm Skin Gloves", "AQ40", "Quest - Armaments of War", 0]);
+
+// ZG Quests
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20217, "Belt of Tiny Heads", "ZG", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20216, "Belt of Preserved Heads", "ZG", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20215, "Belt of Shriveled Heads", "ZG", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20213, "Belt of Shrunken Heads", "ZG", "Quest", 0]);
