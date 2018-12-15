@@ -82,6 +82,10 @@ foreach ($json as $atlasKey => $list) {
         $raidName = $matches[1];
         $bossName = $matches[2];
 
+        if (isset($renameMap[$raidName])) {
+            $raidName = $renameMap[$raidName];
+        }
+
         foreach ($list as $itemData) {
             $itemId = $itemData[0];
             if ($itemId != 0) {
@@ -254,3 +258,7 @@ $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22377, "The 
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22348, "Doomulus Prime", "AQ", "Quest", 0]);
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22347, "Fahrad's Reloading Repeater", "AQ", "Quest", 0]);
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22380, "Simone's Cultivating Hammer", "AQ", "Quest", 0]);
+
+// Confront Yeh'kinya ZG
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20219, "Tattered Hakkari Cape", "ZG", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20218, "Faded Hakkari Cloak", "ZG", "Quest", 0]);
