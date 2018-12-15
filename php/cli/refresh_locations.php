@@ -14,7 +14,8 @@ require '/php/error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
-$json = JSON::decode(file_get_contents("/dumps/instances.json"));
+
+$sql->execute("TRUNCATE item_locations", []);
 
 $instances = [
     "Mara",
@@ -48,8 +49,39 @@ $renameMap = [
     "UldTrash" => "BOE",
     "AQOpening" => "AQO",
     "Onyxia" => "ONY",
+    "T3" => "NAX",
+    "World" => "BOE",
+    "AQ20" => "AQ20",
+    "AQ40" => "AQ40",
+    "ZG" => "ZG",
+    "T0" => "T½"
 ];
 
+// Sets
+$json = JSON::decode(file_get_contents("/dumps/sets.json"));
+foreach ($json as $atlasKey => $list) {
+
+    if (!preg_match("/(T3|World|AQ20|AQ40|ZG|T0)/", $atlasKey, $matches)) {
+        echo "No match $atlasKey\n";
+        continue;
+    }
+
+    $match = $matches[1];
+    $location = $renameMap[$match];
+
+    //echo "$atlasKey $match $location\n";
+    foreach ($list as $itemData) {
+        $itemId = $itemData[0];
+        $itemName = preg_replace("/=.*=/", "", $itemData[2]);
+
+        if ($itemId > 0) {
+            $sql->execute("REPLACE INTO item_locations VALUES (?, ?, ?, ?, ?)", [$itemId, $itemName, $location, '', 0]);
+        }
+    }
+}
+
+// Raid and dungeon items.
+$json = JSON::decode(file_get_contents("/dumps/instances.json"));
 $raidRegExp = "/^(";
 $raidRegExp .= implode("|", $raids);
 $raidRegExp .= ")(.*)/";
@@ -58,9 +90,6 @@ $instanceRegExp = "/^(";
 $instanceRegExp .= implode("|", $instances);
 $instanceRegExp .= ")(.*)/";
 
-$sql->execute("TRUNCATE item_locations", []);
-
-// Raid and dungeon items.
 foreach ($json as $atlasKey => $list) {
     if (preg_match($instanceRegExp, $atlasKey, $matches)) {
         $instanceName = $matches[1];
@@ -179,38 +208,6 @@ foreach ($json as $atlasKey => $list) {
 
         if ($itemId > 0) {
             $sql->execute("REPLACE INTO item_locations VALUES (?, ?, ?, ?, ?)", [$itemId, $itemName, 'PVP', '', 0]);
-        }
-    }
-}
-
-// Sets
-$map = [
-    "T3" => "NAX",
-    "World" => "BOE",
-    "AQ20" => "AQ20",
-    "AQ40" => "AQ40",
-    "ZG" => "ZG",
-    "T0" => "T0",
-];
-
-$json = JSON::decode(file_get_contents("/dumps/sets.json"));
-foreach ($json as $atlasKey => $list) {
-
-    if (!preg_match("/(T3|World|AQ20|AQ40|ZG|T0)/", $atlasKey, $matches)) {
-        echo "No match $atlasKey\n";
-        continue;
-    }
-
-    $match = $matches[1];
-    $location = $map[$match];
-
-    //echo "$atlasKey $match $location\n";
-    foreach ($list as $itemData) {
-        $itemId = $itemData[0];
-        $itemName = preg_replace("/=.*=/", "", $itemData[2]);
-
-        if ($itemId > 0) {
-            $sql->execute("REPLACE INTO item_locations VALUES (?, ?, ?, ?, ?)", [$itemId, $itemName, $location, '', 0]);
         }
     }
 }
