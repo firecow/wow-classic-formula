@@ -6,7 +6,6 @@ namespace App;
 
 use App\Encoding\JSON;
 use App\Exceptions\DAOException;
-use Exception;
 use PDO;
 use PDOStatement;
 use Traversable;
@@ -31,12 +30,6 @@ class SQL
         return $this->pdo->quote($str);
     }
 
-    /**
-     * @param string $statement
-     * @param array $inputParams
-     * @return PDOStatement
-     * @throws Exception
-     */
     private function prepare(string $statement, array $inputParams): PDOStatement
     {
         $pdo = $this->pdo;
@@ -49,11 +42,6 @@ class SQL
         return $stmt;
     }
 
-    /**
-     * @param string $statement
-     * @return PDOStatement
-     * @throws Exception
-     */
     public function raw(string $statement): PDOStatement
     {
         $pdo = $this->pdo;
@@ -64,23 +52,11 @@ class SQL
         return $statement;
     }
 
-    /**
-     * @param string $statement
-     * @param array $inputParams
-     * @return Traversable
-     * @throws Exception
-     */
     public function execute(string $statement, array $inputParams): Traversable
     {
         return $this->prepare($statement, $inputParams);
     }
 
-    /**
-     * @param string $statement
-     * @param array $inputParams
-     * @return array
-     * @throws Exception
-     */
     public function fetchAssoc(string $statement, array $inputParams): array
     {
         $stmt = $this->prepare($statement, $inputParams);
@@ -92,12 +68,6 @@ class SQL
         return $dbObject;
     }
 
-    /**
-     * @param string $statement
-     * @param array $inputParams
-     * @return array
-     * @throws Exception
-     */
     public function fetchAll(string $statement, array $inputParams): array
     {
         $stmt = $this->prepare($statement, $inputParams);
@@ -109,13 +79,6 @@ class SQL
         return $result;
     }
 
-    /**
-     * @param string $statement
-     * @param array $inputParams
-     * @param int $column
-     * @return string
-     * @throws DAOException
-     */
     public function fetchColumnString(string $statement, array $inputParams, int $column = 0): string
     {
         $stmt = $this->prepare($statement, $inputParams);
@@ -127,13 +90,6 @@ class SQL
         return $columnValue;
     }
 
-    /**
-     * @param string $statement
-     * @param array $inputParams
-     * @param int $column
-     * @return int
-     * @throws DAOException
-     */
     public function fetchColumnInt(string $statement, array $inputParams, int $column = 0): int
     {
         $stmt = $this->prepare($statement, $inputParams);
