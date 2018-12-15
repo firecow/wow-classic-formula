@@ -237,11 +237,20 @@ foreach ($json as $atlasKey => $list) {
 // Items not included in json files. These are class specific.
 // AQ Arnaments of War
 // TODO: Add em all
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20717, "Desert Bloom Gloves", "AQ40", "Quest - Armaments of War", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20716, "Sandworm Skin Gloves", "AQ40", "Quest - Armaments of War", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20717, "Desert Bloom Gloves", "AQ", "Quest - Armaments of War", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20716, "Sandworm Skin Gloves", "AQ", "Quest - Armaments of War", 0]);
 
 // ZG Quests
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20217, "Belt of Tiny Heads", "ZG", "Quest", 0]);
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20216, "Belt of Preserved Heads", "ZG", "Quest", 0]);
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20215, "Belt of Shriveled Heads", "ZG", "Quest", 0]);
 $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20213, "Belt of Shrunken Heads", "ZG", "Quest", 0]);
+
+
+// 1.10 The Perfect Poison AQ / ZG Queste
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22378, "Ravenholdt Slicer", "AQ", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22379, "Shivsprocket's Shiv", "AQ", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22377, "The Thunderwood Poker", "AQ", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22348, "Doomulus Prime", "AQ", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22347, "Fahrad's Reloading Repeater", "AQ", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22380, "Simone's Cultivating Hammer", "AQ", "Quest", 0]);
