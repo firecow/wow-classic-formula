@@ -23,8 +23,8 @@ $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $conf
 // TODO: Crafted items dublicate (Hide of the wild etc.etc.)
 // TODO: Weapon Skill attributes
 // TODO: Hover tooltip
-// TODO: Random Bonus
-// TODO: Manually add averages over items use effects.
+// TODO: Random Bonus items
+// TODO: Manually add averages over items USE effects.
 // TODO: Warlocks/Mages/Priests can't dual wield.
 // TODO: Fishing, Mining, Attack Power against (xxx)
 // TODO: Buttons to filter items for specific patches/timeline
