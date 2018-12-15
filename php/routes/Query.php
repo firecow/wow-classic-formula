@@ -33,7 +33,7 @@ class Query
         $sql = $ctx->createSQL();
 
         $statement = "
-          SELECT item_stats.*, ($formula) as gearpoint, location, cts.slotName, cts.typeName
+          SELECT item_stats.*, ($formula) as gearpoint, COALESCE(location, 'Quest') as location, cts.slotName, cts.typeName
             FROM item_stats
               JOIN item_slots slots
                 ON slots.slotName = item_stats.slotName
@@ -68,6 +68,10 @@ class Query
             if (count($slots[$slotName]) > 25) {
                 continue;
             }
+
+            //if (!in_array($row['location'], ["Quest", "BWL", "MC", "ONY", "BOE", "BRD", "DM", "DME", "DMN", "DMW", "Dukes", "Elemental", "Crafted", "LBRS", "Mara", "UBRS", "STRAT", "ST", "SCHOLO"])) {
+            //    continue;
+            //}
 
             $slots[$slotName][] = $row;
         }
