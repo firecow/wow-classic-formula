@@ -19,8 +19,7 @@ require '/php/error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
-// TODO: Quest/Drop/PVP... More granulated locations.
-// TODO: Crafted items dublicate (Hide of the wild etc.etc.)
+// TODO: Arnaments of War item locations
 // TODO: Weapon Skill attributes
 // TODO: Hover tooltip
 // TODO: Random Bonus items
@@ -56,6 +55,17 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
         $climate->red("No itemName found. ($itemId)");
         return;
     }
+
+    if (strpos($matches[0], "Pattern:")) {
+        $climate->yellow("This is a Pattern");
+        return;
+    }
+
+    if (strpos($matches[0], "Plans:")) {
+        $climate->yellow("This is a Plan");
+        return;
+    }
+
     $itemName = $matches[1];
 
     if ($element == null) {
