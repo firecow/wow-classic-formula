@@ -19,6 +19,10 @@ require '/php/error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
+// TODO: Rhok'delar, Longbow of the Ancient Keepers DEP
+// TODO: Thorium Rifle
+// TODO: Collapse All
+// TODO: Bloodvine Vest
 // TODO: Add patch number for each items.
 // TODO: Arnaments of War item locations
 // TODO: Weapon Skill attributes
