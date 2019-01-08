@@ -32,10 +32,6 @@ html, body {
     padding: 2px;
 }
 
-.ui.horizontal.list > .item {
-    margin-left: 0;
-}
-
 .dropdown.icon {
     outline: none;
 }
