@@ -238,24 +238,34 @@ foreach ($json as $atlasKey => $list) {
 // Items not included in json files. These are class specific.
 // AQ Arnaments of War
 // TODO: Add em all
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20717, "Desert Bloom Gloves", "AQ", "Quest - Armaments of War", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20716, "Sandworm Skin Gloves", "AQ", "Quest - Armaments of War", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20717, "Desert Bloom Gloves", "Quest", "Armaments of War", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20716, "Sandworm Skin Gloves", "Quest", "Armaments of War", 0]);
 
 // ZG Quests
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20217, "Belt of Tiny Heads", "ZG", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20216, "Belt of Preserved Heads", "ZG", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20215, "Belt of Shriveled Heads", "ZG", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20213, "Belt of Shrunken Heads", "ZG", "Quest", 0]);
-
+// TODO: Wanted: Vile Priestess Hexx and Her Minions
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20217, "Belt of Tiny Heads", "Quest", "ZG", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20216, "Belt of Preserved Heads", "Quest", "ZG", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20215, "Belt of Shriveled Heads", "Quest", "ZG", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20213, "Belt of Shrunken Heads", "Quest", "ZG", 0]);
 
 // 1.10 The Perfect Poison AQ / ZG Queste
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22378, "Ravenholdt Slicer", "AQ", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22379, "Shivsprocket's Shiv", "AQ", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22377, "The Thunderwood Poker", "AQ", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22348, "Doomulus Prime", "AQ", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22347, "Fahrad's Reloading Repeater", "AQ", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22380, "Simone's Cultivating Hammer", "AQ", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22378, "Ravenholdt Slicer", "Quest", "", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22379, "Shivsprocket's Shiv", "Quest", "", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22377, "The Thunderwood Poker", "Quest", "", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22348, "Doomulus Prime", "Quest", "", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22347, "Fahrad's Reloading Repeater", "Quest", "", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [22380, "Simone's Cultivating Hammer", "Quest", "", 0]);
 
 // Confront Yeh'kinya ZG
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20219, "Tattered Hakkari Cape", "ZG", "Quest", 0]);
-$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20218, "Faded Hakkari Cloak", "ZG", "Quest", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20219, "Tattered Hakkari Cape", "Quest", "", 0]);
+$sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [20218, "Faded Hakkari Cloak", "Quest", "", 0]);
+
+// 58 PVP Items
+$iter = $sql->fetchAll("SELECT * FROM item_stats WHERE itemId >= 16369 AND itemId < 16532 AND requiresLevel = 58", []);
+foreach ($iter as $row) {
+    $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [$row['itemId'], $row['itemName'], "PVP", "", 0]);
+}
+$iter = $sql->fetchAll("SELECT * FROM item_stats WHERE itemId <= 17687 AND itemId >= 17562 AND requiresLevel = 58", []);
+foreach ($iter as $row) {
+    $sql->execute("INSERT INTO item_locations VALUES (?, ?, ?, ?, ?)", [$row['itemId'], $row['itemName'], "PVP", "", 0]);
+}

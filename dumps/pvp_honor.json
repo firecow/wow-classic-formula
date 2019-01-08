@@ -765,12 +765,6 @@
             "=ds=#s8#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8# =q18=Rank 5"
         ],
         [
-            16486,
-            "INV_Bracer_07",
-            "=q3=First Sergeant's Silk Cuffs",
-            "=ds=#s8#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8# =q18=Rank 5"
-        ],
-        [
             0,
             "",
             "",
@@ -796,12 +790,6 @@
         ],
         [
             18435,
-            "INV_Bracer_07",
-            "=q3=First Sergeant's Leather Armguards",
-            "=ds=#s8#, #a2# =q12=#c6# =q18=Rank 5"
-        ],
-        [
-            16497,
             "INV_Bracer_07",
             "=q3=First Sergeant's Leather Armguards",
             "=ds=#s8#, #a2# =q12=#c6# =q18=Rank 5"

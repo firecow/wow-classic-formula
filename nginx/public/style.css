@@ -16,13 +16,32 @@ html, body {
     margin: 0;
 }
 
-.padding {
-    padding: var(--padding);
+.ui.list {
+    margin: 0;
 }
 
-.width-zepto {
-    min-width: 50px;
-    max-width: 50px;
+.ui.dividing.header {
+    padding: 0;
+}
+
+.ui.styled.accordion .title {
+    padding: 4px;
+}
+
+.ui[class*="mega compact"].table td {
+    padding: 2px;
+}
+
+.ui.horizontal.list > .item {
+    margin-left: 0;
+}
+
+.dropdown.icon {
+    outline: none;
+}
+
+.padding {
+    padding: var(--padding);
 }
 
 .width-pico {
@@ -85,4 +104,12 @@ html, body {
 .legendary {
     color: #ff8000;
     font-weight: bold;
+}
+
+.boeBIS {
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+.instanceBIS {
+    background-color: rgba(0, 0, 255, 0.2);
 }

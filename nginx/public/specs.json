@@ -1,0 +1,175 @@
+{
+  "holy_priest": {
+    "attrs": {
+      "healing": 1,
+      "spellDmg": 1,
+      "mana5": 2.0,
+      "intellect": 0.5,
+      "spirit": 0.35
+    },
+    "preRaidBIS": {
+      "Head": "The Postmaster's Band",
+      "Neck": 0,
+      "Shoulder": 0,
+      "Back": 0,
+      "Chest": 0,
+      "Wrist": 0,
+      "Hands": 0,
+      "Waist": 0,
+      "Legs": 0,
+      "Feet": 0
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/inv_staff_30.jpg",
+    "class": "Priest"
+  },
+  "holy_paladin": {
+    "attrs": {
+      "spellCrit": 30,
+      "holyCrit": 30,
+      "spellDmg": 1,
+      "healing": 1,
+      "mana5": 1.5,
+      "intellect": 1
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg",
+    "class": "Paladin"
+  },
+  "resto_druid": {
+    "attrs": {
+      "healing": 1,
+      "spellDmg": 1,
+      "mana5": 2.0,
+      "intellect": 0.5,
+      "spirit": 0.25
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/spell_nature_healingtouch.jpg",
+    "class": "Druid"
+  },
+  "shadow_priest": {
+    "attrs": {
+      "spellDmg": 1,
+      "intellect": 0.2,
+      "shadowDmg": 1,
+      "spellHit": 13,
+      "spellCrit": 10,
+      "holyCrit": 10
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/inv_staff_12.jpg",
+    "class": "Priest"
+  },
+  "frost_mage": {
+    "attrs": {
+      "spellDmg": 1,
+      "intellect": 0.2,
+      "frostDmg": 1,
+      "spellHit": 13,
+      "spellCrit": 10
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/spell_frost_frostbolt02.jpg",
+    "class": "Mage"
+  },
+  "fire_mage": {
+    "attrs": {
+      "spellDmg": 1,
+      "intellect": 0.2,
+      "fireDmg": 1,
+      "spellHit": 13,
+      "spellCrit": 10
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/spell_fire_fireball02.jpg",
+    "class": "Mage"
+  },
+  "warlock": {
+    "attrs": {
+      "spellDmg": 1,
+      "intellect": 0.2,
+      "shadowDmg": 1,
+      "spellHit": 13,
+      "spellCrit": 10
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/classicon_warlock.jpg",
+    "class": "Warlock"
+  },
+  "hunter": {
+    "attrs": {
+      "agility": 2.5,
+      "attackPower": 1,
+      "rangedPower": 1,
+      "crit": 24,
+      "hit": 24,
+
+      "maxDmg": 0.7
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg",
+    "class": "Hunter"
+  },
+  "rogue": {
+    "attrs": {
+      "agility": 2.2,
+      "strength": 1,
+      "attackPower": 1,
+      "crit": 24,
+      "hit": 18,
+
+      "maxDmg": 0.7
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/classicon_rogue.jpg",
+    "class": "Rogue"
+  },
+  "feral_cat": {
+    "attrs": {
+      "agility": 1.5,
+      "strength": 1,
+      "attackPower": 1,
+      "crit": 24,
+      "hit": 24,
+
+      "maxDmg": 0.7
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/classicon_rogue.jpg",
+    "class": "Druid"
+  },
+  "fury_warrior": {
+    "attrs": {
+      "agility": 0.5,
+      "strength": 2,
+      "attackPower": 1,
+      "crit": 24,
+      "hit": 24,
+
+      "maxDmg": 0.7
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/inv_sword_12.jpg",
+    "class": "Warrior"
+  }
+}

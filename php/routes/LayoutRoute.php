@@ -17,6 +17,7 @@ class LayoutRoute
 //        $queryParams = $request->getQueryParams();
 //        error_log(json_encode($queryParams));
 
+        $sql = $ctx->createSQL();
         $data = [
             "classes" => ["Priest", "Rogue", "Warrior", "Hunter", "Druid", "Mage", "Warlock", "Paladin", "Shaman"],
 
@@ -29,7 +30,8 @@ class LayoutRoute
                 "Healers" => ["healing", "mana5", "holyCrit"],
                 "Resistance" => ["frostRes", "fireRes", "shadowRes", "natureRes"],
             ],
-            "predefinedSpecs" => PredefinedSpecs::$array
+            "predefinedSpecs" => PredefinedSpecs::$array,
+            'patches' => $sql->fetchAll("SELECT patch FROM item_stats GROUP BY patch", [])
         ];
         $html = $ctx->render("routes/LayoutRoute.twig", $data);
         return new HtmlTextResponse($html);

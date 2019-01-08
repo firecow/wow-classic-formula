@@ -1,21 +1,26 @@
 
 <div id="content" class="ui grid">
-    {% for slotName, items in slots %}
-    <div class="ui column width-medium">
+    {% for slotName, slotData in slots %}
+    {% set items = slotData['items'] %}
+    {% set boeBIS = slotData['boeBIS'] %}
+    {% set instanceBIS = slotData['instanceBIS'] %}
+    {% if items|length > 0 %}
+    <div class="ui column width-large">
         <div class="ui styled accordion fluid">
             <div class="title">
                 <i class="dropdown icon"></i>
                 {{ slotName }}
             </div>
             <div class="content active">
-                <table class="ui striped small very compact celled table">
+                <table class="ui striped small mega compact celled unstackable table">
                     <tbody>
                     {% for item in items %}
                     <tr>
                         <td><img class="ui pico rounded image" src="https://wow.zamimg.com/images/wow/icons/large/{{ item.iconName }}.jpg"/></td>
                         <td data-label="ItemName" class="{{ item.rarity }}">{{ item.itemName }}</td>
-                        <td data-label="Points">{{ item.gearpoint }}</td>
-                        <td data-label="Points">{{ item.location }}</td>
+                        <td data-label="Points" style="text-align: center; font-size:10px;">{{ item.gearpoint|number_format }}</td>
+                        <td data-label="Patch" style="text-align: center; font-size:10px;">{{ item.patch}}</td>
+                        <td data-label="Location" style="text-align: center; font-size:9px;">{{ item.location }}</td>
                     </tr>
                     {% endfor %}
                     </tbody>
@@ -23,5 +28,6 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
 </div>

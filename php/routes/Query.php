@@ -22,6 +22,7 @@ class Query
         }
 
         $class = $parsedBody['class'];
+        $patches = implode("','", explode(",", $parsedBody['patch']));
 
         // Generate formula
         $formula = [];
@@ -46,6 +47,7 @@ class Query
           WHERE 
             item_stats.rarity IN ('uncommon', 'rare', 'epic', 'legendary') AND
             cts.className = ? AND
+            item_stats.patch IN ('$patches') AND
             (classes.className = ? OR classes.className IS NULL)
           ORDER BY 
             slots.position ASC, 
@@ -54,8 +56,29 @@ class Query
             itemLevel DESC,
             itemName ASC
         ";
+
         $iter = $sql->execute($statement, [$class, $class]);
+        $instances = [
+            "Mara",
+            "BRD",
+            "DME",
+            "DMN",
+            "DMW",
+            "DM",
+            "Quest",
+            "UBRS",
+            "STRAT",
+            "ST",
+            "Crafted",
+            "BOE",
+            "LBRS",
+            "SCHOLO",
+            "UldTrash",
+            "AQOpening",
+            "ZG"
+        ];
         $slots = [];
+        $mergeHands = ["Mage", "Priest", "Warlock", "Paladin", "Druid"];
         foreach ($iter as $row) {
             if ($row['gearpoint'] == 0) {
                 continue;
@@ -63,18 +86,35 @@ class Query
 
             $slotName = $row['slotName'];
             if (!isset($slots[$slotName])) {
-                $slots[$slotName] = [];
+                $slots[$slotName] = ["items" => []];
             }
-            if (count($slots[$slotName]) > 25) {
+
+            if (count($slots[$slotName]["items"]) >= 15) {
                 continue;
             }
 
-            //if (!in_array($row['location'], ["Quest", "BWL", "MC", "ONY", "BOE", "BRD", "DM", "DME", "DMN", "DMW", "Dukes", "Elemental", "Crafted", "LBRS", "Mara", "UBRS", "STRAT", "ST", "SCHOLO"])) {
-            //    continue;
-            //}
+            $slots[$slotName]["items"][] = $row;
 
-            $slots[$slotName][] = $row;
         }
+
+        if (in_array($class, $mergeHands)) {
+            $mainHandItems = isset($slots['Main Hand']) ? $slots['Main Hand']["items"] : [];
+            $offHandItems = isset($slots['One-hand']) ? $slots['One-hand']["items"] : [];
+
+            $slots['Main Hand']["items"] = array_merge($mainHandItems, $offHandItems);
+            usort($slots['Main Hand']["items"], function($a, $b) {
+                $result = 0;
+                if ($a['gearpoint'] > $b['gearpoint']) {
+                    $result = -1;
+                } else if ($a['gearpoint'] < $b['gearpoint']) {
+                    $result = 1;
+                }
+                return $result;
+            });
+            unset($slots['One-hand']);
+            $slots['Main Hand']["items"] = array_slice($slots['Main Hand']["items"], 0, 15);
+        }
+
 
         $html = $ctx->render("routes/Query.twig", [
             'slots' => $slots

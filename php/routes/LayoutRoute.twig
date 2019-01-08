@@ -23,12 +23,40 @@
 </head>
 <body onload="window.wcf = new WowClassicFormula();">
 
-<div class="ui horizontal list">
-    <div class="item">
-        <div class="ui icon circular button" onclick="wcf.specPressed(event);" data-content="Holy Priest" data-position="bottom center">
-            <img title="Holy Priest" class="ui width-zepto circular image" src="//wow.zamimg.com/images/wow/icons/large/inv_staff_30.jpg">
+<div id="specs" class="ui horizontal list"></div>
+<div class="ui hidden divider"></div>
+<div id="patch" class="ui fluid search selection multiple dropdown">
+    <input type="hidden" name="patch" value="1.0.0,1.3.0,1.4.0,1.5.0,1.6.0,1.7.0,1.8.0,1.9.0,1.10.0,1.11.0">
+    <div class="default text">Pick Patches...</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        <div class="item" data-value="1.0.0">
+            1.0.0 Launch
         </div>
-
+        <div class="item" data-value="1.3.0">
+            1.3.0 Dire Maul
+        </div>
+        <div class="item" data-value="1.4.0">
+            1.4.0 Elemental Invasion
+        </div>
+        <div class="item" data-value="1.6.0">
+            1.6.0 BWL
+        </div>
+        <div class="item" data-value="1.7.0">
+            1.7.0 ZG
+        </div>
+        <div class="item" data-value="1.8.0">
+            1.8.0 Dragons / Silithid
+        </div>
+        <div class="item" data-value="1.9.0">
+            1.9.0 AQ
+        </div>
+        <div class="item" data-value="1.10.0">
+            1.10.0 Tier ½
+        </div>
+        <div class="item" data-value="1.11.0">
+            1.11.0 Naxx
+        </div>
     </div>
 </div>
 <div class="ui hidden divider"></div>
@@ -47,7 +75,7 @@
                 <div class="item">
                     <div class="content">
                         <div class="header">{{ attribute|spacify|title }}</div>
-                        <input class="width-pico" id="i_{{ attribute }}" type="text" name="attr_{{ attribute }}">
+                        <input class="width-pico item_attribute" id="i_{{ attribute }}" type="text" name="attr_{{ attribute }}">
                     </div>
                 </div>
                 {% endfor %}
@@ -84,10 +112,5 @@
 <div class="ui divider"></div>
 
 <div id="content" class="ui grid"></div>
-<script>
-    $('.dropdown').dropdown();
-    $('.accordion').accordion();
-    $('.button').popup();
-</script>
 </body>
 </html>

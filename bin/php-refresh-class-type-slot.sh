@@ -4,4 +4,4 @@ docker run --rm -t \
     --volume "/${PWD}/php:/php" \
     --network wow-classic-formula_default \
     -w "//php/" \
-    nanoninja/php-fpm:7.2 php cli/atlasloot_convert.php \
+    nanoninja/php-fpm:7.2 php cli/refresh_class_type_slot.php \
