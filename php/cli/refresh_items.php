@@ -89,17 +89,17 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     }
 
     if (strpos($matches[0], "Pattern:")) {
-        $climate->yellow("This is a Pattern");
+        //$climate->yellow("This is a Pattern");
         return;
     }
 
     if (strpos($matches[0], "Schematic:")) {
-        $climate->yellow("This is a Schematic");
+        //$climate->yellow("This is a Schematic");
         return;
     }
 
     if (strpos($matches[0], "Plans:")) {
-        $climate->yellow("This is a Plan");
+        //$climate->yellow("This is a Plan");
         return;
     }
 
@@ -159,7 +159,7 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
 
     if ($slotName == null) {
         if (!preg_match('/<a class="q1" href=".*?">This Item Begins a Quest<\/a>/', $contents, $matches)) {
-            $climate->yellow("Skipping $itemName ($itemId) no matched slot");
+            //$climate->yellow("Skipping $itemName ($itemId) no matched slot");
         }
         return;
     }
@@ -192,7 +192,7 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     }
 
     // Parse required level.
-    if (preg_match('/Requires Level (\d*)/', $contents, $matches)) {
+    if (preg_match('/>Requires Level (\d*)</', $contents, $matches)) {
         $statsParsed['requiresLevel'] = $matches[1];
     }
 
@@ -294,6 +294,9 @@ $each = new EachPromise($promises, [
 // Start items refreshing
 $p = $each->promise();
 $p->wait();
+
+// Non parsable class specifics
+$sql->execute("INSERT INTO item_classes VALUES (20037, 'Arcane Crystal Pendant', 'Mage')", []);
 
 // Insert Atiesh, Greatstaff of the Guardian manually
 $sql->execute("INSERT INTO item_classes VALUES (22632, 'Atiesh, Greatstaff of the Guardian', 'Druid')", []);
