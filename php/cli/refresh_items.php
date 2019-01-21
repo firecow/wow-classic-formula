@@ -27,7 +27,6 @@ $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $conf
 // TODO: Signet Ring of the Bronze Dragonflight
 // TODO: Moonshadow Stave
 // TODO: Set bonus's
-// TODO: Rhok'delar, Longbow of the Ancient Keepers DEP
 // TODO: Thorium Rifle
 // TODO: Collapse All
 // TODO: Bloodvine Vest
@@ -307,6 +306,11 @@ $sql->execute("UPDATE item_stats SET stamina = 28, intellect = 28, spirit = 27, 
 $sql->execute("UPDATE item_stats SET stamina = 28, intellect = 28, spirit = 27, mana5 = 11, healing = 300, attackPower = 420 WHERE itemId = 22631", []);
 $sql->execute("UPDATE item_stats SET stamina = 30, intellect = 29, spellCrit = 2, spellDmg = 183 WHERE itemId = 22630", []);
 $sql->execute("UPDATE item_stats SET stamina = 31, intellect = 32, spirit = 24, spellHit = 2, spellCrit = 2, spellDmg = 150 WHERE itemId = 22589", []);
+
+// Hunter Epic
+$sql->execute("DELETE FROM item_stats WHERE itemId = ?", [20487]); // Lok'delar, Stave of the Ancient Keepers DEP
+$sql->execute("DELETE FROM item_stats WHERE itemId = ?", [20488]); // Rhok'delar, Longbow of the Ancient Keepers DEP
+
 
 // Remove test items.
 $sql->execute("DELETE FROM item_stats WHERE itemId = ?", [19879]); // Alex's Test Beatdown Staff
