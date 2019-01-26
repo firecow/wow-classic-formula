@@ -23,7 +23,7 @@ class LayoutRoute
 
             "attributes" => [
                 "Core" => ["stamina", "strength", "agility", "spirit", "intellect"],
-                "Physical" => ["attackPower", "rangedPower", "crit", "hit", "defense", "parry", "blockValue", "blockPct", "dodge"],
+                "Physical" => ["attackPower", "rangedPower", "crit", "hit"],
                 "Weapons" => ["minDmg", "maxDmg", "speed", "dps"],
                 "Tank" => ["armor", "defense", "dodge", "parry", "blockPct", "blockValue"],
                 "Caster" => ["spellDmg", "spellCrit", "spellHit", "shadowDmg", "fireDmg", "frostDmg", "arcaneDmg", "natureDmg"],
@@ -31,7 +31,8 @@ class LayoutRoute
                 "Resistance" => ["frostRes", "fireRes", "shadowRes", "natureRes"],
             ],
             "predefinedSpecs" => PredefinedSpecs::$array,
-            'patches' => $sql->fetchAll("SELECT patch FROM item_stats GROUP BY patch", [])
+            'patches' => $sql->fetchAll("SELECT patch FROM item_stats GROUP BY patch", []),
+            'locations' => array_map(function($row) { return $row['location']; }, $sql->fetchAll("SELECT location FROM item_locations GROUP BY location", []))
         ];
         $html = $ctx->render("routes/LayoutRoute.twig", $data);
         return new HtmlTextResponse($html);

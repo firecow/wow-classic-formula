@@ -59,6 +59,18 @@
         </div>
     </div>
 </div>
+<div id="location" class="ui fluid search selection multiple dropdown">
+    <input type="hidden" name="location" value="BRD,Mara,STRAT,SCHOLO,UBRS,ST,LBRS,BOE">
+    <div class="default text">Pick Locations...</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        {% for location in locations %}
+        <div class="item" data-value="{{ location }}">
+            {{ location }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
 <div class="ui hidden divider"></div>
 <div class="ui styled accordion fluid">
     <div class="title">

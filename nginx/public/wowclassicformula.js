@@ -28,8 +28,10 @@ WowClassicFormula.prototype.submitPressed = function() {
     var form = document.getElementById("form");
     var formData = new FormData(form);
 
-    var values = $('#patch').dropdown('get value');
-    formData.append("patch", values);
+    var locations = $('#location').dropdown('get value');
+    var patches = $('#patch').dropdown('get value');
+    formData.append("patch", patches);
+    formData.append("location", locations);
     var request = new XMLHttpRequest();
     document.getElementById("content").innerHTML = null;
     request.addEventListener('load', function(data) {

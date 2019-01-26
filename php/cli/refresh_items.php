@@ -22,10 +22,10 @@ $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $conf
 // TODO: Dmg on Weapons for Hunter, Dmg on Ranged for Rogues/Warriors (Stat sticking)
 // TODO: Merge Main Hand / One-hand, One-hand / Offhand
 // TODO: Tier ½ item_classes
-// TODO: White Bone Shredder
+// TODO: White Bone Shredder (Horde Only)
 // TODO: The Shadowfoot Stabber (24222)
-// TODO: Signet Ring of the Bronze Dragonflight
-// TODO: Moonshadow Stave
+// TODO: Signet Ring of the Bronze Dragonflight (Class specifics)
+// TODO: Moonshadow Stave (Druid Only)
 // TODO: Set bonus's
 // TODO: Thorium Rifle
 // TODO: Collapse All
@@ -36,7 +36,6 @@ $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $conf
 // TODO: Random Bonus items
 // TODO: Manually add averages over items USE effects.
 // TODO: Fishing, Mining, Attack Power against (xxx)
-// TODO: Buttons to filter items for specific patches/timeline
 // TODO: Fails on comma sepator
 
 libxml_use_internal_errors(true);
@@ -211,12 +210,13 @@ $parseAndStoreData = function($contents, $itemId) use ($sql, $climate) {
     // Parse item rarity
     if (preg_match('/\<b.*class="(\S\d)".*\/b\>/', $contents, $matches)) {
         $map = [
-            'q0' => "poor",
-            'q1' => "common",
-            'q2' => "uncommon",
-            'q3' => "rare",
-            'q4' => "epic",
-            "q5" => "legendary"
+            "q0" => "poor",
+            "q1" => "common",
+            "q2" => "uncommon",
+            "q3" => "rare",
+            "q4" => "epic",
+            "q5" => "legendary",
+            "q6" => "artifact",
         ];
         if (isset($map[$matches[1]])) {
             $statsParsed['rarity'] = $map[$matches[1]];
@@ -313,12 +313,15 @@ $sql->execute("DELETE FROM item_stats WHERE itemId = ?", [20488]); // Rhok'delar
 
 
 // Remove test items.
+$sql->execute("DELETE FROM item_stats WHERE itemId = ?", [19760]); // Overlord's Embrace (Weird)
 $sql->execute("DELETE FROM item_stats WHERE itemId = ?", [19879]); // Alex's Test Beatdown Staff
 $sql->execute("DELETE FROM item_stats WHERE itemId = ?", [18970]); // Ring of Critical Testing 2
 $sql->execute("DELETE FROM item_stats WHERE itemId = ?", [13262]); // Ashbringer
 $sql->execute("DELETE FROM item_stats WHERE itemId = ?", [17782]); // Talisman of Binding Shard
 $sql->execute("DELETE FROM item_stats WHERE itemId = ?", [23051]); // Glaive of the Defender
 $sql->execute("DELETE FROM item_stats WHERE itemId = ?", [22736]); // Andonisus, Reaper of Souls
+$sql->execute("DELETE FROM item_stats WHERE itemId = ?", [21587]); // Wristguards of Castigation
+
 
 $climate->blue("All done!!!");
 
