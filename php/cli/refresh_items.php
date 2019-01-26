@@ -21,20 +21,23 @@ $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $conf
 
 // TODO: Dmg on Weapons for Hunter, Dmg on Ranged for Rogues/Warriors (Stat sticking)
 // TODO: Merge Main Hand / One-hand, One-hand / Offhand
+// TODO: Equip: +X Weapon Damage.
+// TODO: Weapon Skill attributes
+
+// TODO: Manually add averages over items USE effects.
+// TODO: Set bonus's
+// TODO: Random Bonus items
+
+// TODO: Arcane Resistance
 // TODO: Tier ½ item_classes
 // TODO: White Bone Shredder (Horde Only)
 // TODO: The Shadowfoot Stabber (24222)
 // TODO: Signet Ring of the Bronze Dragonflight (Class specifics)
 // TODO: Moonshadow Stave (Druid Only)
-// TODO: Set bonus's
 // TODO: Thorium Rifle
 // TODO: Collapse All
-// TODO: Bloodvine Vest
 // TODO: Arnaments of War item locations
-// TODO: Weapon Skill attributes
 // TODO: Hover tooltip
-// TODO: Random Bonus items
-// TODO: Manually add averages over items USE effects.
 // TODO: Fishing, Mining, Attack Power against (xxx)
 // TODO: Fails on comma sepator
 
