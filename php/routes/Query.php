@@ -23,7 +23,7 @@ class Query
 
         $class = $parsedBody['class'];
         $patches = implode("','", explode(",", $parsedBody['patch']));
-        $locations = implode("','", explode(",", $parsedBody['location']));
+        $locations = explode(",", $parsedBody['location']);
 
         $sql = $ctx->createSQL();
 
@@ -64,7 +64,6 @@ class Query
                 ON locations.itemId = item_stats.itemId
           WHERE
             item_stats.patch IN ('$patches') AND
-            locations.location IN ('$locations') AND
             item_stats.rarity IN ('uncommon', 'rare', 'epic', 'legendary') AND
             cts.className = ? AND
             (classes.className = ? OR classes.className IS NULL)
@@ -80,6 +79,10 @@ class Query
             $items[] = $item;
         }
 
+        $items = array_filter($items, function($item) use ($locations) {
+            return in_array($item['location'], $locations);
+        });
+
         usort($items, function($a, $b) {
             if ($a['position'] !== $b['position']) {
                 return $a['position'] - $b['position'];
@@ -87,30 +90,7 @@ class Query
             return ($b["gearpoint"] <=> $a["gearpoint"]);
         });
 
-        //echo json_encode($items);
-        //exit;
-
-        $instances = [
-            "Mara",
-            "BRD",
-            "DME",
-            "DMN",
-            "DMW",
-            "DM",
-            "Quest",
-            "UBRS",
-            "STRAT",
-            "ST",
-            "Crafted",
-            "BOE",
-            "LBRS",
-            "SCHOLO",
-            "UldTrash",
-            "AQOpening",
-            "ZG"
-        ];
         $slots = [];
-        $mergeHands = ["Mage", "Priest", "Warlock", "Paladin", "Druid"];
         foreach ($items as $item) {
             if ($item['gearpoint'] == 0) {
                 continue;
@@ -121,14 +101,52 @@ class Query
                 $slots[$slotName] = ["items" => []];
             }
 
-            if (count($slots[$slotName]["items"]) >= 15) {
-                continue;
-            }
-
             $slots[$slotName]["items"][] = $item;
         }
 
-        if (in_array($class, $mergeHands)) {
+        // Recalculate weapons
+        $ignoreDmgOnWeapons = ["Hunter"];
+        $fieldsToIgnore = ['minDmg', 'maxDmg','speed','Dps'];
+        $slotsToIgnore = ['Main Hand', 'One-hand', 'Off Hand', 'Two-hand'];
+        if (in_array($class, $ignoreDmgOnWeapons)) {
+            foreach ($slotsToIgnore as $slotToIgnore) {
+                foreach ($slots[$slotToIgnore]['items'] as &$item) {
+                    $item['gearpoint'] = 0;
+                    foreach ($attributes as $name => $value) {
+                        if (!in_array($name, $fieldsToIgnore)) {
+                            $item['gearpoint'] += $item[$name] * $value;
+                        }
+                    }
+                }
+                usort($slots[$slotToIgnore]["items"], function($a, $b) {
+                    return ($b["gearpoint"] <=> $a["gearpoint"]);
+                });
+            }
+        }
+
+        // Recalculate ranged
+        $ignoreDmgOnWeapons = ["Warrior", "Rogue"];
+        $fieldsToIgnore = ['minDmg', 'maxDmg','speed','Dps'];
+        $slotsToIgnore = ['Ranged'];
+        if (in_array($class, $ignoreDmgOnWeapons)) {
+            foreach ($slotsToIgnore as $slotToIgnore) {
+                foreach ($slots[$slotToIgnore]['items'] as &$item) {
+                    $item['gearpoint'] = 0;
+                    foreach ($attributes as $name => $value) {
+                        if (!in_array($name, $fieldsToIgnore)) {
+                            $item['gearpoint'] += $item[$name] * $value;
+                        }
+                    }
+                }
+                usort($slots[$slotToIgnore]["items"], function($a, $b) {
+                    return ($b["gearpoint"] <=> $a["gearpoint"]);
+                });
+            }
+        }
+
+        // Merge One-hands into Main Hand.
+        $mergeOneToMain = ["Hunter", "Warrior", "Rogue", "Mage", "Priest", "Warlock", "Paladin", "Druid"];
+        if (in_array($class, $mergeOneToMain)) {
             $mainHandItems = isset($slots['Main Hand']) ? $slots['Main Hand']["items"] : [];
             $offHandItems = isset($slots['One-hand']) ? $slots['One-hand']["items"] : [];
 
@@ -136,10 +154,27 @@ class Query
             usort($slots['Main Hand']["items"], function($a, $b) {
                 return ($b["gearpoint"] <=> $a["gearpoint"]);
             });
-            unset($slots['One-hand']);
-            $slots['Main Hand']["items"] = array_slice($slots['Main Hand']["items"], 0, 15);
         }
 
+        // Merge One-hands into Offhands.
+        $mergeOneToOff = ["Hunter", "Warrior", "Rogue"];
+        if (in_array($class, $mergeOneToOff)) {
+            $mainHandItems = isset($slots['Off Hand']) ? $slots['Off Hand']["items"] : [];
+            $offHandItems = isset($slots['One-hand']) ? $slots['One-hand']["items"] : [];
+
+            $slots['Off Hand']["items"] = array_merge($mainHandItems, $offHandItems);
+            usort($slots['Off Hand']["items"], function($a, $b) {
+                return ($b["gearpoint"] <=> $a["gearpoint"]);
+            });
+        }
+
+        if (in_array($class, $mergeOneToOff) || in_array($class, $mergeOneToMain)) {
+            unset($slots['One-hand']);
+        }
+
+        foreach (array_keys($slots) as $slotName) {
+            $slots[$slotName]["items"] = array_slice($slots[$slotName]["items"], 0, 20);
+        }
 
         $html = $ctx->render("routes/Query.twig", [
             'slots' => $slots

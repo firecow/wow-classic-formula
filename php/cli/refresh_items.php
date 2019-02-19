@@ -19,14 +19,12 @@ require '/php/error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
-// TODO: Dmg on Weapons for Hunter, Dmg on Ranged for Rogues/Warriors (Stat sticking)
-// TODO: Merge Main Hand / One-hand, One-hand / Offhand
 // TODO: Equip: +X Weapon Damage.
 // TODO: Weapon Skill attributes
 
 // TODO: Manually add averages over items USE effects.
 // TODO: Set bonus's
-// TODO: Random Bonus items
+// TODO: Random Bonus's on Items
 
 // TODO: Arcane Resistance
 // TODO: Tier ½ item_classes
@@ -36,6 +34,7 @@ $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $conf
 // TODO: Moonshadow Stave (Druid Only)
 // TODO: Thorium Rifle
 // TODO: Collapse All
+// TODO: Elemental (Location) all BOE?
 // TODO: Arnaments of War item locations
 // TODO: Hover tooltip
 // TODO: Fishing, Mining, Attack Power against (xxx)
