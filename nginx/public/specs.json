@@ -35,7 +35,7 @@
       "spellDmg": 1,
       "healing": 1,
       "mana5": 1.5,
-      "intellect": 1
+      "intellect": 1.2
     },
     "preRaidBIS": {
 
@@ -77,7 +77,7 @@
       "spellDmg": 1,
       "intellect": 0.16,
       "shadowDmg": 1,
-      "spellHit": 13,
+      "spellHit": 8,
       "spellCrit": 10,
       "holyCrit": 10
     },
@@ -208,6 +208,27 @@
 
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/inv_shield_06.jpg",
+    "class": "Warrior"
+  },
+  "warrior_tps": {
+    "attrs": {
+      "stamina": 2,
+      "strength": 1.77,
+      "agility": 1.4,
+      "attackPower": 0.7,
+      "crit": 16,
+      "hit": 12,
+      "armor": 0.1,
+      "defense": 4,
+      "dodge": 20,
+      "parry": 26,
+      "blockPct": 5,
+      "blockValue": 1
+    },
+    "preRaidBIS": {
+
+    },
+    "icon": "//wow.zamimg.com/images/wow/icons/large/ability_racial_bloodrage.jpg",
     "class": "Warrior"
   }
 }
