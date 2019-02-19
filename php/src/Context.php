@@ -16,13 +16,11 @@ class Context
     private $config;
     private $random;
     private $localizedTexts;
-    private $passwordHasher;
 
     public function __construct()
     {
         $this->random = new Random();
         $this->config = new Config();
-        $this->passwordHasher = new PasswordHasher();
 
         $localizedTexts = new LocalizedTexts();
         $this->localizedTexts = $localizedTexts;
@@ -47,11 +45,6 @@ class Context
     public function getJWTSecret(): string
     {
         return $this->getConfig()->getJWTSecret();
-    }
-
-    public function getPasswordHasher(): PasswordHasher
-    {
-        return $this->passwordHasher;
     }
 
     public function render(string $name, array $ctx = []): string
