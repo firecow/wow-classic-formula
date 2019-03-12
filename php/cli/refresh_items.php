@@ -19,12 +19,12 @@ require '/php/error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
+// TODO: Random Bonus's attributes on Items
 // TODO: Equip: +X Weapon Damage.
 // TODO: Weapon Skill attributes
 
 // TODO: Manually add averages over items USE effects.
 // TODO: Set bonus's
-// TODO: Random Bonus's on Items
 
 // TODO: Arcane Resistance
 // TODO: Tier ½ item_classes
