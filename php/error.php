@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 set_exception_handler(function (Throwable $exception): void {
     echo "$exception";
+    error_log("$exception");
     exit(1);
 });
 set_error_handler(function (int $errtype, string $errstr, string $errfile, int $errlin): void {
@@ -18,6 +19,7 @@ register_shutdown_function(function (): void {
 
     $exception = new ErrorException($lastError['message'], $lastError['type'], 1, $lastError['file'], $lastError['line']);
     echo "$exception";
+    error_log("$exception");
 });
 
 

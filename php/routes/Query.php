@@ -130,6 +130,10 @@ class Query
         $slotsToIgnore = ['Ranged'];
         if (in_array($class, $ignoreDmgOnWeapons)) {
             foreach ($slotsToIgnore as $slotToIgnore) {
+                if (empty($slots[$slotToIgnore])) {
+                    continue;
+                }
+
                 foreach ($slots[$slotToIgnore]['items'] as &$item) {
                     $item['gearpoint'] = 0;
                     foreach ($attributes as $name => $value) {
