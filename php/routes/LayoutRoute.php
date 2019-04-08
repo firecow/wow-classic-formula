@@ -23,7 +23,7 @@ class LayoutRoute
 
             "attributes" => [
                 "Core" => ["stamina", "strength", "agility", "spirit", "intellect"],
-                "Physical" => ["attackPower", "rangedPower", "crit", "hit"],
+                "Physical" => ["attackPower", "rangedPower", "druidAttackPower", "crit", "hit"],
                 "Weapons" => ["minDmg", "maxDmg", "speed", "dps"],
                 "Tank" => ["armor", "defense", "dodge", "parry", "blockPct", "blockValue"],
                 "Caster" => ["spellDmg", "spellCrit", "spellHit", "shadowDmg", "fireDmg", "frostDmg", "arcaneDmg", "natureDmg"],

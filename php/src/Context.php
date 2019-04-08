@@ -24,6 +24,7 @@ class Context
 
         $localizedTexts = new LocalizedTexts();
         $this->localizedTexts = $localizedTexts;
+
         $this->twig = new Environment(new FilesystemLoader("/"));
         $this->twig->addFilter(
             new TwigFilter('localize', function (string $localizationKey, ...$args) use ($localizedTexts) {
@@ -35,6 +36,8 @@ class Context
                 return preg_replace('/(?<!\ )[A-Z1-9]/', ' $0', $str);
             })
         );
+        //$this->twig->addExtension(new Twig_Extensions_Extension_Date());
+
     }
 
     protected function getConfig(): Config

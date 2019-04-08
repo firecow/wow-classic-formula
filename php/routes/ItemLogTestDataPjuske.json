@@ -1,0 +1,260 @@
+{
+  "firecow": {
+    "attributes": {
+      "spirit": 0.35,
+      "intellect": 0.4,
+      "spellDmg": 1,
+      "healing": 1,
+      "mana5": 2.0
+    },
+    "items": [
+      {
+        "itemId": 18609,
+        "timestamp": 1546641573
+      },
+      {
+        "itemId": 18723,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 18103,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 22721,
+        "timestamp": 1548359998
+      },
+      {
+        "itemId": 16925,
+        "timestamp": 1541964186
+      },
+      {
+        "itemId": 22716,
+        "timestamp": 1544900381
+      },
+      {
+        "itemId": 18608,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 16926,
+        "timestamp": 1538941809
+      },
+      {
+        "itemId": 13938,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 13353,
+        "timestamp": 1545511019
+      },
+      {
+        "itemId": 16811,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 19437,
+        "timestamp": 1541360483
+      },
+      {
+        "itemId": 18507,
+        "timestamp": 1539541612
+      },
+      {
+        "itemId": 12930,
+        "timestamp": 1539541612
+      },
+      {
+        "itemId": 18387,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 18681,
+        "timestamp": 1539541612
+      },
+      {
+        "itemId": 19140,
+        "timestamp": 1538437695
+      },
+      {
+        "itemId": 22711,
+        "timestamp": 1546551921
+      },
+      {
+        "itemId": 18727,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 17077,
+        "timestamp": 1537734278
+      },
+      {
+        "itemId": 20717,
+        "timestamp": 1549837466
+      },
+      {
+        "itemId": 18102,
+        "timestamp": 1537734278
+      },
+      {
+        "itemId": 16309,
+        "timestamp": 1537734278
+      },
+      {
+        "itemId": 19435,
+        "timestamp": 1543176089
+      },
+      {
+        "itemId": 13968,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 19903,
+        "timestamp": 1548359998
+      },
+      {
+        "itemId": 11766,
+        "timestamp": 1537734278
+      },
+      {
+        "itemId": 16058,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 16817,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 16812,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 16921,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 12554,
+        "timestamp": 1539541612
+      },
+      {
+        "itemId": 18510,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 18862,
+        "timestamp": 1539722952
+      },
+      {
+        "itemId": 19885,
+        "timestamp": 1547759255
+      },
+      {
+        "itemId": 16922,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 22256,
+        "timestamp": 1544900381
+      },
+      {
+        "itemId": 16816,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 11822,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 15138,
+        "timestamp": 1538343054
+      },
+      {
+        "itemId": 16924,
+        "timestamp": 1544992666
+      },
+      {
+        "itemId": 19382,
+        "timestamp": 1550436965
+      },
+      {
+        "itemId": 21524,
+        "timestamp": 1545512579
+      },
+      {
+        "itemId": 19395,
+        "timestamp": 1541967409
+      },
+      {
+        "itemId": 18385,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 18534,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 13178,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 18469,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 19812,
+        "timestamp": 1538513471
+      },
+      {
+        "itemId": 17064,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 13170,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 12543,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 18878,
+        "timestamp": 1545511019
+      },
+      {
+        "itemId": 11623,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 18497,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 18317,
+        "timestamp": 1539717841
+      },
+      {
+        "itemId": 19886,
+        "timestamp": 1548359998
+      },
+      {
+        "itemId": 18398,
+        "timestamp": 1537734278
+      },
+      {
+        "itemId": 14154,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 16819,
+        "timestamp": 1537100411
+      },
+      {
+        "itemId": 18327,
+        "timestamp": 1539541612
+      }
+    ]
+
+
+
+  }
+}

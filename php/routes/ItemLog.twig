@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name="viewport" content="initial-scale=1">
+    <title>WoW Classic Formula</title>
+
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/accordion.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/popup.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/accordion.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/popup.css">
+
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+</head>
+<body>
+{% for charName, charData in chars %}
+<table id="table_{{ charName }}" class="ui small mega compact unstackable table">
+    {% set bestInSlot = charData['currentBestInSlot'] %}
+    {% set history = charData['history'] %}
+
+    {% for log in history %}
+        <tr>
+
+            <td class="{{ log.rarity }}">{{ log['itemName'] }}</td>
+            <td style="text-align: center; font-size:10px;">{{ log['timestamp']|date }}</td>
+            <td style="text-align: center; font-size:10px;">{{ log.gearpoint|number_format }}</td>
+            <td style="text-align: center; font-size:10px;">{{ log.delta ? log.delta|number_format : ''}}</td>
+            <td style="text-align: center; font-size:10px;">{{ log.location }}</td>
+        </tr>
+    {% endfor %}
+
+
+    <tr>
+        <td colspan="4"><h3 class="ui">Non important items</h3></td>
+    </tr>
+    {% set history = charData['offspec'] %}
+    {% for log in history %}
+        <tr>
+            <td class="{{ log.rarity }}">{{ log['itemName'] }}</td>
+            <td style="text-align: center; font-size:10px;">{{ log['timestamp']|date }}</td>
+            <td colspan="2" style="text-align: center; font-size:10px;">{{ log.gearpoint|number_format }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+{% endfor %}
+
+</body>
+</html>

@@ -19,27 +19,6 @@ require '/php/error.php';
 $config = new Config();
 $sql = new SQL($config->getPDODataSourceName(), $config->getPDOUsername(), $config->getPDOPassword());
 
-// TODO: Random Bonus's attributes on Items
-// TODO: Equip: +X Weapon Damage.
-// TODO: Weapon Skill attributes
-
-// TODO: Manually add averages over items USE effects.
-// TODO: Set bonus's
-
-// TODO: Arcane Resistance
-// TODO: Tier ½ item_classes
-// TODO: White Bone Shredder (Horde Only)
-// TODO: The Shadowfoot Stabber (24222)
-// TODO: Signet Ring of the Bronze Dragonflight (Class specifics)
-// TODO: Moonshadow Stave (Druid Only)
-// TODO: Thorium Rifle
-// TODO: Collapse All
-// TODO: Elemental (Location) all BOE?
-// TODO: Arnaments of War item locations
-// TODO: Hover tooltip
-// TODO: Fishing, Mining, Attack Power against (xxx)
-// TODO: Fails on comma sepator
-
 libxml_use_internal_errors(true);
 
 $files = scandir("../data/classicdbscrabes/");

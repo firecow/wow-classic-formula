@@ -28,6 +28,9 @@ class ItemsStatRegex
         "attackPower" => [
             "regex" => "([\d|\.]*) Attack Power\.",
         ],
+        "druidAttackPower" => [
+            "regex" => "([\d|\.]*) Attack Power in Cat, Bear, and Dire Bear forms only.",
+        ],
         "rangedPower" => [
             "regex" => "\+([\d|\.]*) ranged Attack Power\.",
         ],

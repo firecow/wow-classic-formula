@@ -29,10 +29,12 @@ try {
 }
     /** @noinspection PhpRedundantCatchClauseInspection */
 catch (NotFoundException $ex) {
+    $headers['Content-type'] = "text/plain";
     $body = $ctx->render("fragments/NotFound.twig");
 }
 /** @noinspection PhpRedundantCatchClauseInspection */
 catch (RouteException $ex) {
+    $headers['Content-type'] = "text/plain";
     $statusCode = $ex->getStatusCode();
     $protocol = "1.1";
     $body = $ex->getMessage();

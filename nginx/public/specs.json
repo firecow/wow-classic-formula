@@ -3,27 +3,9 @@
     "attrs": {
       "healing": 1,
       "spellDmg": 1,
-      "mana5": 1.8,
+      "mana5": 2,
       "intellect": 0.4,
       "spirit": 0.35
-    },
-    "preRaidBIS": {
-      "Head": "The Postmaster's Band",
-      "Neck": "Tooth of Gnarr",
-      "Shoulder": "Kentic Amice",
-      "Back": "Spritecaster Cape",
-      "Chest": "Robes of the Exalted",
-      "Wrist": "Aristocratic Cuffs",
-      "Hands": "Hands of the Exalted Herald",
-      "Waist": "Dustfeather Sash",
-      "Legs": "Senior Designer's Pantaloons",
-      "Feet": "Omnicast Boots",
-      "Finger": "Rosewine Circle",
-      "Trinket": "Briarwood Reed",
-      "Two-Hand": "Guiding Stave of Wisdom",
-      "Main Hand": "The Hammer of Grace",
-      "Off Hand": "Thaurissan's Royal Scepter",
-      "Ranged": "Bonecreeper Stylus"
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/inv_staff_30.jpg",
     "class": "Priest"
@@ -37,9 +19,6 @@
       "mana5": 1.5,
       "intellect": 1.2
     },
-    "preRaidBIS": {
-
-    },
     "icon": "//wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg",
     "class": "Paladin"
   },
@@ -47,27 +26,9 @@
     "attrs": {
       "healing": 1,
       "spellDmg": 1,
-      "mana5": 1.8,
+      "mana5": 2,
       "intellect": 0.4,
       "spirit": 0.20
-    },
-    "preRaidBIS": {
-      "Head": "Tribal War Feathers",
-      "Neck": "Tooth of Gnarr",
-      "Shoulder": "Kentic Amice",
-      "Back": "Spritecaster Cape",
-      "Chest": "Robes of the Exalted",
-      "Wrist": "Bleak Howler Armguards",
-      "Hands": "Hands of the Exalted Herald",
-      "Waist": "Crystallized Girdle",
-      "Legs": "Senior Designer's Pantaloons",
-      "Feet": "Verdant Footpads",
-      "Finger": "Rosewine Circle",
-      "Trinket": "Briarwood Reed",
-      "Two-Hand": "Guiding Stave of Wisdom",
-      "Main Hand": "The Hammer of Grace",
-      "Off Hand": "Thaurissan's Royal Scepter",
-      "Ranged": "Bonecreeper Stylus"
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/spell_nature_healingtouch.jpg",
     "class": "Druid"
@@ -81,9 +42,6 @@
       "spellCrit": 10,
       "holyCrit": 10
     },
-    "preRaidBIS": {
-
-    },
     "icon": "//wow.zamimg.com/images/wow/icons/large/inv_staff_12.jpg",
     "class": "Priest"
   },
@@ -94,9 +52,6 @@
       "frostDmg": 1,
       "spellHit": 13,
       "spellCrit": 10
-    },
-    "preRaidBIS": {
-
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/spell_frost_frostbolt02.jpg",
     "class": "Mage"
@@ -109,9 +64,6 @@
       "spellHit": 13,
       "spellCrit": 10
     },
-    "preRaidBIS": {
-
-    },
     "icon": "//wow.zamimg.com/images/wow/icons/large/spell_fire_fireball02.jpg",
     "class": "Mage"
   },
@@ -122,9 +74,6 @@
       "shadowDmg": 1,
       "spellHit": 18,
       "spellCrit": 10
-    },
-    "preRaidBIS": {
-
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/classicon_warlock.jpg",
     "class": "Warlock"
@@ -137,9 +86,6 @@
       "crit": 30,
       "hit": 10,
       "maxDmg": 0.7
-    },
-    "preRaidBIS": {
-
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg",
     "class": "Hunter"
@@ -154,9 +100,6 @@
 
       "maxDmg": 1
     },
-    "preRaidBIS": {
-
-    },
     "icon": "//wow.zamimg.com/images/wow/icons/large/classicon_rogue.jpg",
     "class": "Rogue"
   },
@@ -165,11 +108,9 @@
       "agility": 2.2,
       "strength": 2,
       "attackPower": 1,
+      "druidAttackPower": 1,
       "crit": 24,
       "hit": 5
-    },
-    "preRaidBIS": {
-
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/ability_druid_catform.jpg",
     "class": "Druid"
@@ -184,18 +125,12 @@
 
       "maxDmg": 1
     },
-    "preRaidBIS": {
-
-    },
     "icon": "//wow.zamimg.com/images/wow/icons/large/inv_sword_12.jpg",
     "class": "Warrior"
   },
   "feral_bear": {
     "attrs": {
       "armor": 1
-    },
-    "preRaidBIS": {
-
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/talentspec_druid_feral_bear.jpg",
     "class": "Druid"
@@ -204,15 +139,11 @@
     "attrs": {
       "stamina": 1
     },
-    "preRaidBIS": {
-
-    },
     "icon": "//wow.zamimg.com/images/wow/icons/large/inv_shield_06.jpg",
     "class": "Warrior"
   },
   "warrior_tps": {
     "attrs": {
-      "stamina": 2,
       "strength": 1.77,
       "agility": 1.4,
       "attackPower": 0.7,
@@ -224,9 +155,6 @@
       "parry": 26,
       "blockPct": 5,
       "blockValue": 1
-    },
-    "preRaidBIS": {
-
     },
     "icon": "//wow.zamimg.com/images/wow/icons/large/ability_racial_bloodrage.jpg",
     "class": "Warrior"

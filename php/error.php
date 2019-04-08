@@ -4,6 +4,7 @@
 declare(strict_types=1);
 
 set_exception_handler(function (Throwable $exception): void {
+    header('Content-type: text/plain');
     echo "$exception";
     error_log("$exception");
     exit(1);
@@ -18,6 +19,7 @@ register_shutdown_function(function (): void {
     }
 
     $exception = new ErrorException($lastError['message'], $lastError['type'], 1, $lastError['file'], $lastError['line']);
+    header('Content-type: text/plain');
     echo "$exception";
     error_log("$exception");
 });
